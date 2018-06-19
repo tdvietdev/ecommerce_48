@@ -67,7 +67,6 @@ class Category < ApplicationRecord
     throw :abort
   end
 
-
   def check_have_product
     return if products.empty?
     errors[:base] << I18n.t("category.has_product")
