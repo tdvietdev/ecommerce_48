@@ -1,0 +1,141 @@
+.navbar-nav {
+  &:not(.sm-collapsible) ul {
+    .caret {
+      border-bottom: 4px solid transparent;
+      border-left: 4px dashed;
+      border-top: 4px solid transparent;
+      margin-right: 15px;
+      margin-top: 6px;
+      position: absolute;
+      right: 0;
+    }
+    a.has-submenu {
+      padding-right: 30px;
+    }
+  }
+  &.sm-collapsible {
+    .caret, ul .caret {
+      border-style: solid;
+      border-width: 1px;
+      height: 26px;
+      line-height: 24px;
+      margin: -3px 15px 0 0;
+      padding: 0;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      width: 32px;
+    }
+    .caret:before {
+      content: '+';
+      font-family: monospace;
+      font-weight: bold;
+    }
+    .open > a > .caret:before {
+      content: '-';
+    }
+    a.has-submenu {
+      padding-right: 50px;
+    }
+    &[data-sm-skip-collapsible-behavior] {
+      .caret, ul .caret {
+        border-bottom: 0;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+        border-top: 4px dashed;
+        height: 0;
+        margin: 0 0 0 2px;
+        padding: 0;
+        position: static;
+        width: 0;
+      }
+      .caret:before {
+        content: '' !important;
+      }
+      a.has-submenu {
+        padding-right: 15px;
+      }
+    }
+  }
+  span {
+    &.scroll-up, &.scroll-down {
+      display: none;
+      height: 20px;
+      overflow: hidden;
+      position: absolute;
+      text-align: center;
+      visibility: hidden;
+    }
+    &.scroll-up-arrow {
+      border-bottom: 7px solid;
+      border-left: 7px dashed transparent;
+      border-right: 7px dashed transparent;
+      border-top: 7px dashed transparent;
+      height: 0;
+      left: 50%;
+      margin-left: -8px;
+      overflow: hidden;
+      position: absolute;
+      top: -2px;
+      width: 0;
+    }
+    &.scroll-down-arrow {
+      border-bottom: 7px dashed transparent;
+      border-bottom: 7px solid;
+      border-left: 7px dashed transparent;
+      border-left: 7px dashed transparent;
+      border-right: 7px dashed transparent;
+      border-right: 7px dashed transparent;
+      border-top: 7px dashed transparent;
+      border-top: 7px solid;
+      height: 0;
+      left: 50%;
+      margin-left: -8px;
+      overflow: hidden;
+      position: absolute;
+      top: -2px;
+      top: 6px;
+      width: 0;
+    }
+  }
+  &.sm-collapsible ul {
+    .dropdown-menu {
+      > li > a, .dropdown-header {
+        padding-left: 35px;
+      }
+    }
+    ul {
+      .dropdown-menu {
+        > li > a, .dropdown-header {
+          padding-left: 45px;
+        }
+      }
+      ul {
+        .dropdown-menu {
+          > li > a, .dropdown-header {
+            padding-left: 55px;
+          }
+        }
+        ul .dropdown-menu {
+          > li > a, .dropdown-header {
+            padding-left: 65px;
+          }
+        }
+      }
+    }
+  }
+  .dropdown-menu > li > a {
+    white-space: normal;
+  }
+  ul.sm-nowrap > li > a {
+    white-space: nowrap;
+  }
+  &.sm-collapsible ul.sm-nowrap > li > a {
+    white-space: normal;
+  }
+}
+
+.navbar-right ul.dropdown-menu {
+  left: 0;
+  right: auto;
+}
