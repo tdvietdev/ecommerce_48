@@ -1,0 +1,7 @@
+<% if @category.errors.empty? %>
+  $("#ct-<%= j @category.id.to_s %>").remove();
+  $("#notice").html("<%= t ".success" %>")
+<% else %>
+  $("#notice").html("<%= j render "shared/error_messages",
+    object: @category %>")
+<% end %>

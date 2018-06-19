@@ -13,9 +13,11 @@
     <%= render "layouts/admin/slidebar" %>
     <%= render "layouts/admin/navbar" %>
     <div class="right_col" role="main">
-      <% flash.each do |message_type, message| %>
-        <div class="alert alert-<%= message_type %>"><%= message %></div>
-      <% end %>
+      <div id="notice" class="alert">
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      </div>
       <%= yield %>
       <%= render "layouts/admin/footer" %>
       <%= debug params if Rails.env.development? %>

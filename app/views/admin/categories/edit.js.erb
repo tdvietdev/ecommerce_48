@@ -1,0 +1,4 @@
+$('#ct-<%= @category.id %> > span > .m_span').html("<%= j render "edit" %>")
+$( "#ed_cancle-<%= @category.id %>" ).click(function() {
+  $('#ct-<%= @category.id %> > span > .m_span').html("<%= j render "span" %>");
+});

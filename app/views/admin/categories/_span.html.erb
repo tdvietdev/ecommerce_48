@@ -1,0 +1,14 @@
+<%= @category.name %>
+<%= link_to new_admin_category_path(id: @category.id),
+  remote: true do %>
+  <%= fa_icon "plus" %>
+<% end %>
+  |
+<%= link_to edit_admin_category_path(@category), remote: true do %>
+  <%= fa_icon "edit" %>
+<% end %>
+  |
+<%= link_to [:admin, @category], method: :delete,
+  data: {confirm: t(".confirm")}, remote: true do %>
+  <%= fa_icon "trash" %>
+<% end %>

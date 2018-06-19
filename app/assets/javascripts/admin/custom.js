@@ -113,4 +113,14 @@ function gd(year, month, day) {
 
 $(document).ready(function () {
   init_sidebar();
+  (function ($) {
+    function init() {
+      $('.easy-tree').EasyTree({
+        addable: true,
+        editable: true,
+        deletable: true
+      });
+    }
+    window.onload = init();
+  })(jQuery)
 });

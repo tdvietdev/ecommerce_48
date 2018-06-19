@@ -10,3 +10,6 @@ user:
 
   password:
     min_length: 8
+category:
+  name_max: 70
+  name_min: 3

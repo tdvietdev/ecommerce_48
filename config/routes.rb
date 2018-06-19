@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     resources :static_pages
+    resources :categories
   end
 
   get "/signup", to: "users#new"
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users
+  resources :categories
 end
