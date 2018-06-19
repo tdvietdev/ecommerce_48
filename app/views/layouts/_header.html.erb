@@ -1,0 +1,62 @@
+<header>
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-right">
+        <li>
+          <a href="#"><i class="fa fa-user-o"></i><%= t ".my_account" %></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a href="#" class="logo">
+              <img src="" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="header-search">
+            <form>
+              <select class="input-select">
+              </select>
+              <input class="input" placeholder="<%= t ".search_here" %>">
+              <button class="search-btn"><%= t ".search" %></button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+            <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-shopping-cart"></i>
+                <span><%= t ".your_cart" %></span>
+                <div class="qty"></div>
+              </a>
+              <div class="cart-dropdown">
+                <div class="cart-list"></div>
+                <div class="cart-summary"></div>
+                <div class="cart-btns">
+                  <a href="#"><%= t ".view_cart" %></a>
+                  <a href="#"><%= t ".checkout" %>
+                    <i class="fa fa-arrow-circle-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="menu-toggle">
+              <a href="#">
+                <i class="fa fa-bars"></i>
+                <span><%= t ".menu" %></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<%= render "layouts/navbar" %>

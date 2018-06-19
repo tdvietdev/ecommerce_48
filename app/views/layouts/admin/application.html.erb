@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title yield(:title) %></title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag "admin/application", media: "all", "data-turbolinks-track": "reload" %>
+  <%= javascript_include_tag "admin/application", "data-turbolinks-track": "reload" %>
+  <%= render "layouts/shim" %>
+</head>
+<body class="nav-md">
+<div class="container body">
+  <div class="main_container">
+    <%= render "layouts/admin/slidebar" %>
+    <%= render "layouts/admin/navbar" %>
+    <div class="right_col" role="main">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+      <%= render "layouts/admin/footer" %>
+      <%= debug params if Rails.env.development? %>
+      <%= javascript_include_tag "admin/custom", "data-turbolinks-track": "reload" %></div>
+  </div>
+</div>
+</body>
+</html>
