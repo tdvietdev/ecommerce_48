@@ -135,6 +135,48 @@ en:
       edit:
         submit: "oke"
         cancle: "cancle"
+    products:
+      index:
+        stt: "STT"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        category: "Category"
+        action: "Action"
+        new_product: "New Product"
+        import: "Import"
+        search: "Search"
+        h_import: "Import from Excel file"
+      show:
+        edit: "Edit"
+        back: "Back"
+      new:
+        back: "Back"
+        title: "New Product"
+      product:
+        confirm: "Are you sure?"
+      show:
+        id: "ID"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        action: "Action"
+      edit:
+        show: "Show"
+        back: "Back"
+        title: "Editing product"
+      create:
+        success: "Create product success!"
+      update:
+        success: "Update product success!"
+      destroy:
+        success: "Delete product success!"
+        error: "Delete product error! "
+      import:
+        success: "Import product success!"
+        not_found: "File no found!"
   category:
     has_children: "This category has childrent!"
     has_product: "This category has products!"
+  product:
+    exits_order: "This product belong to order!"

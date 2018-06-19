@@ -1,0 +1,22 @@
+<tr>
+  <td><%= create_index params[:page], index, Settings.product.per_page %></td>
+  <th><%= product.name %></th>
+  <th><%= product.price %></th>
+  <th><%= product.category.name %></th>
+  <th>
+    <%= link_to [:admin, product], remote: true do %>
+      <%= fa_icon "eye" %>
+    <% end %>
+  </th>
+  <th>
+    <%= link_to edit_admin_product_path(product), remote: true do %>
+      <%= fa_icon "edit" %>
+    <% end  %>
+  </th>
+  <th>
+    <%= link_to [:admin, product], method: :delete,
+      data: {confirm: t(".confirm")} do %>
+      <%= fa_icon "trash" %>
+    <% end %>
+  </th>
+</tr>
