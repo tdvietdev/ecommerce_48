@@ -15,7 +15,7 @@
             <li><a href=""> <%= t ".profile" %></a></li>
             <li><a href=""><%= t ".help" %></a></li>
             <li><a href="">
-              <i class="fa fa-sign-out pull-right"></i> <%= t ".logout" %>
+              <i class="fa fa-sign-out pull-right"></i> <%= link_to t(".logout"), admin_logout_path, method: :delete %>
             </a></li>
           </ul>
         </li>

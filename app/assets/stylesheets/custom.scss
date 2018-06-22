@@ -1,3 +1,117 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 @import 'font-awesome';
+@import 'color';
+
+.login_content {
+  margin: 0 auto;
+  min-width: 280px;
+  padding: 25px 0 0;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 0 $white;
+}
+
+.login_content h1 {
+  font: normal 25px Helvetica, Arial, sans-serif;
+  letter-spacing: -0.05em;
+  line-height: 20px;
+  margin: 10px 0 30px
+}
+
+.login_content h1:before,
+.login_content h1:after {
+  content: "";
+  height: 1px;
+  position: absolute;
+  top: 10px;
+  width: 27%
+}
+
+.login_content h1:after {
+  background: $gray;
+  background: linear-gradient(left, $gray 0%, $white 100%);
+  right: 0
+}
+
+.login_content h1:before {
+  background: $gray;
+  background: linear-gradient(right, $gray 0%, $white 100%);
+  left: 0
+}
+
+.login_content h1:before,
+.login_content h1:after {
+  content: "";
+  height: 1px;
+  position: absolute;
+  top: 10px;
+  width: 20%
+}
+
+.login_content h1:after {
+  background: $gray;
+  background: linear-gradient(left, $gray 0%, $white 100%);
+  right: 0
+}
+
+.login_content h1:before {
+  background: $gray;
+  background: linear-gradient(right, $gray 0%, $white 100%);
+  left: 0
+}
+
+.login_content form {
+  margin: 20px 0;
+  position: relative;
+  width: 100%
+}
+
+.login_content form input[type="text"],
+.login_content form input[type="email"],
+.login_content form input[type="tel"],
+.login_content form input[type="password"] {
+  -ms-box-shadow: 0 1px 0 $white, 0 -2px 5px $black inset;
+  -o-box-shadow: 0 1px 0 $white, 0 -2px 5px $black inset;
+  border-radius: 3px;
+  border: 1px solid $gray-light;
+  box-shadow: 0 1px 0 $white, 0 -2px 5px $black inset;
+  color: $gray;
+  margin: 0 0 20px;
+  width: 100%
+}
+
+.login_content form input[type="text"]:focus,
+.login_content form input[type="email"]:focus,
+.login_content form input[type="tel"]:focus,
+.login_content form input[type="password"]:focus {
+  -ms-box-shadow: 0 0 2px $red inset;
+  -o-box-shadow: 0 0 2px $red inset;
+  background-color: $white;
+  border: 1px solid $violet-light;
+  box-shadow: 0 0 2px $violet-light inset;
+  outline: none
+}
+
+#error_explanation {
+  color: $red;
+  ul {
+  color: $red;
+  margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+  color: $state-danger-text;
+  }
+}
+
+.change_link {
+  color: blue
+}
+
+.header-text{
+  color: $white
+}

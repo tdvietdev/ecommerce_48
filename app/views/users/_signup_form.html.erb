@@ -1,0 +1,37 @@
+<div id="register" class="animate form registration_form">
+  <section class="login_content">
+
+      <%= form_for @user, remote: true do |f| %>
+
+        <h1><%= t ".text" %></h1>
+        <div id="notice">
+
+        </div>
+        <%= f.text_field :name, placeholder: t(".name"),
+          class: "form-control" %>
+
+        <%= f.email_field :email, placeholder: t(".email"),
+          class: "form-control" %>
+
+        <%= f.phone_field :phone, placeholder: t(".phone"),
+          class: "form-control" %>
+
+        <%= f.text_field :address, placeholder: t(".address"),
+          class: "form-control" %>
+
+        <%= f.password_field :password, placeholder: t(".pass"),
+          class: "form-control"%>
+
+        <%= f.password_field :password_confirmation,
+          placeholder: t(".confirm"), class: "form-control" %>
+
+        <%= f.submit t(".submit"), class: "btn btn-primary" %>
+      <% end %>
+      <div class="login-link">
+        <%= t ".member" %>
+        <span class="change_link">
+          <%= link_to t(".signup"), login_path, remote: true %>
+        </span>
+      </div>
+  </section>
+</div>
