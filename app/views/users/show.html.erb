@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="user-information">
+    <h3><%= t ".profile" %></h3>
+    <div class="info-content">
+      <ul>
+        <li><b><%= t ".name" %></b><%= current_user.name %></li></br>
+        <li><b><%= t ".email" %></b><%= current_user.email %></li></br>
+        <li><b><%= t ".phone" %></b><%= current_user.phone %></li></br>
+        <li><b><%= t ".address" %></b><%= current_user.address %></li></br>
+        <br/>
+        <li class="btn btn-link"><%= link_to t(".change_profile"), edit_user_path %></li>
+        <li class="btn btn-link"><%= link_to t(".view_history") %></li>
+      </ul>
+    </div>
+  </div>
+</div>
