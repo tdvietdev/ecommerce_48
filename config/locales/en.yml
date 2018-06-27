@@ -20,6 +20,17 @@ en:
       checkout: "Checkout"
       menu: "Menu"
       your_cart: "Your Cart"
+      profile: "Profile"
+      logout: "Log out"
+      login: "Log in"
+      settings: "Settings"
+      login: "Log in"
+      email: "Email"
+      pass: "Password"
+      submit: "Login"
+      new: "New member ?"
+      signup: "Sign up now!"
+
     navbar:
       home: "Home"
       help: "Help"
@@ -49,3 +60,46 @@ en:
       index:
         index: "Home"
 
+  sessions:
+    login_form:
+      login: "Log in"
+      email: "Email"
+      pass: "Password"
+      submit: "Login"
+      new: "New member ?"
+      signup: "Sign up now!"
+
+    create:
+      warning: "Invalid email/password combination"
+  users:
+    signup_form:
+      text: "Create Account"
+      name: "Name"
+      email: "Email"
+      phone: "Phone number"
+      address: "Address"
+      pass: "Password"
+      confirm: "Password confirmation"
+      submit: "Create my account"
+      member: Already a member ?
+      login: "Login"
+
+    create:
+      welcome: "Welcome VP"
+
+  shared:
+    error_messages:
+      err: "error"
+      text: "The form contains"
+
+  admin:
+    static_pages:
+      index:
+        danger: "Login please!"
+        admin: "Please login admin account"
+
+    sessions:
+      new:
+        email: "Email"
+        pass: "Password"
+        submit: "Login"

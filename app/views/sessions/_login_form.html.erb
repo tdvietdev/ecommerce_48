@@ -1,0 +1,27 @@
+<div id="login-form" class="animate form registration_form">
+  <section class="login_content">
+    <%= form_for :session, url: login_path, remote: true do |f| %>
+
+      <h1><%= t (".login") %></h1>
+      <div id="login-notice">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag :div, message, class: "alert alert-#{message_type}" %>
+        <% end %>
+
+      <div>
+      <%= f.email_field :email, placeholder: t(".email"),
+        class: "form-control" %>
+
+      <%= f.password_field :password, placeholder: t(".pass"),
+        class: "form-control"%>
+
+      <%= f.submit t(".submit"), class: "btn btn-primary" %>
+    <% end %>
+    <div class="separator">
+      <%= t ".new" %>
+      <span class="change_link">
+        <%= link_to t(".signup"), signup_path, remote: true %>
+      </span>
+    </div>
+  </section>
+</div>

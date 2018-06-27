@@ -1,5 +1,2 @@
-class Admin::StaticPagesController < ApplicationController
-  layout "admin/application"
-  
-  def index; end
+class Admin::StaticPagesController < Admin::AdminController
 end
