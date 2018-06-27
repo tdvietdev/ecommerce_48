@@ -30,6 +30,12 @@
             </tbody>
           
           </table>
+          <p><strong><%= t ".exit_image" %>:</strong></p>
+          <div style="overflow: hidden;border: 1px solid #CCC;padding: 10px;">
+            <% @product.images.each do |picture| %>
+              <img src="<%= picture.image.url %>" style="float: left; width: 20%;"/>
+            <% end %>
+          </div>
           <%= link_to t(".back"), admin_products_path %>
         </div>
       </div>

@@ -1,3 +1,10 @@
 <h3 class="text-center"><%= t ".title" %></h3>
 <%= render "form" %>
+<p><strong><%= t ".exit_image" %>:</strong></p>
+<div id="upload-status"></div>
+<%= form_for [:admin, @product, Image.new],
+             :html => {id: "image-dropzone", class: :dropzone, multipart: true} do |f| %>
+  <%= f.hidden_field :image %>
+<% end %>
 <%= link_to t(".back"), admin_products_path %>
+<%= javascript_include_tag "admin/dropzone_config" %>

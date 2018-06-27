@@ -1,4 +1,10 @@
 <h1 class="text-center">Editing product</h1>
 <%= render "form" %>
+<p><strong><%= t ".exit_image" %>:</strong></p>
+<%= form_for [:admin, @product, Image.new],
+  :html => {id: "image-dropzone", class: :dropzone, multipart: true} do |f| %>
+  <%= f.hidden_field :image %>
+<% end %>
 <%= link_to t(".show"), [:admin,@product] %> |
 <%= link_to t(".back"), admin_products_path %>
+<%= javascript_include_tag "admin/dropzone_config" %>

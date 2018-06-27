@@ -66,6 +66,19 @@ class Admin::ProductsController < Admin::AdminController
     redirect_to admin_products_path
   end
 
+  def list_image
+    images = []
+    @product.images.each do |i_image|
+      m_image = {
+        id: i_image.id,
+        name: i_image.image.url.to_s.split("/").last,
+        src: i_image.image.thumb.url
+      }
+      images.push(m_image)
+    end
+    render json: {images: images}
+  end
+
   private
   def product_params
     params.require(:product).permit :name, :avatar, :quantity, :price, :detail,
