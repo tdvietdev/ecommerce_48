@@ -1,0 +1,24 @@
+<% provide :title, t(".title")  %>
+<div class="col-md-1">
+  <h3 class="text-success"><%= t ".title" %></h3>
+  <br>
+  <div class="easy-tree">
+    <div class="easy-tree-toolbar">
+      <%= form_for [:admin, @category], remote: true do |f| %>
+      <div class="create">
+        <div class="input-group welld">
+          <%= f.text_field :name, class: "form-control" %>
+          <%= hidden_field_tag "category[parent_code]", "0" %>
+          <span class="input-group-btn">
+            <%= f.submit t(".submit"), class: "btn btn-default btn-success" %>
+          </span>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <ul id="root">
+      <%= render @categories %>
+    </ul>
+  </div>
+</div>
+

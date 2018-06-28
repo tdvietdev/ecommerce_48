@@ -1,0 +1,11 @@
+<% if @category.errors.empty? %>
+  <% if @category.root? %>
+    $("#root").prepend("<%= j render "mcategory" %>");
+    $("#category_name").val("");
+  <% else %>
+    $("#r-<%= @category.parent.id %>").replaceWith("<%= j render "mcategory" %>");
+  <% end %>
+  $("#notice").html("<%= t ".success" %>")
+<% else %>
+  $("#notice").html("<%= j render "shared/error_messages", object: @category %>")
+<% end %>

@@ -1,0 +1,8 @@
+<% if @category.parent? %>
+  $("#ct-<%= @category.id %> > ul").append("<%= j render "new" %>");
+<% else %>
+  $("#ct-<%= @category.id %>").replaceWith("<%= j render "new" %>");
+<% end %>
+$( "#cancle-<%= @category.id %>" ).click(function() {
+  $("#r-<%= @category.id %>").remove();
+});

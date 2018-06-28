@@ -1,0 +1,47 @@
+<% if @category.children.empty? %>
+  <li id="ct-<%= @category.id %>" class="parent_li"><span title="collapse">
+    <span class="glyphicon glyphicon-folder-open"></span>
+      <span class="m_span  glyphicon-file">
+        <%= render "span" %>
+      </span>
+    </span>
+    <ul>
+      <li id="r-<%= @category.id %>">
+        <span>
+          <span class="glyphicon glyphicon-file"></span>
+          <span class="m_span  glyphicon-file">
+            <%= form_for [:admin, Category.new], method: :post,
+              remote: true do |f| %>
+              <%= hidden_field_tag "category[parent_code]", @category.code %>
+              <div class="form-group">
+                <%= f.text_field :name, class: "form-control", value: "" %>
+              </div>
+              <%= f.submit t(".add"), class: "btn btn-primary" %>
+              <button type="button" class="btn btn-default cancel"
+                id="cancle-<%= @category.id %>"><%= t ".cancle" %></button>
+              <% end %>
+          </span>
+        </span>
+      </li>
+    </ul>
+  </li>
+<% else %>
+  <li id="r-<%= @category.id %>">
+  <span>
+    <span class="glyphicon glyphicon-file"></span>
+    <span class="m_span glyphicon-file">
+      <%= form_for [:admin, Category.new], method: :post,
+        remote: true do |f| %>
+        <%= hidden_field_tag "category[parent_code]", @category.code %>
+        <div class="form-group">
+          <%= f.text_field :name, class: "form-control", value: "" %>
+        </div>
+        <%= f.submit t(".add"), class: "btn btn-primary" %>
+        <button type="button" class="btn btn-default cancel"
+          id="cancle-<%= @category.id %>"><%= t ".cancle" %></button>
+        <% end %>
+    </span>
+  </span>
+  </li>
+<% end %>
+

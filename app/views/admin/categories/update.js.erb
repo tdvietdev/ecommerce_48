@@ -1,0 +1,6 @@
+<% if @category.errors.empty? %>
+  $('#ct-<%= @category.id %> > span > .m_span').html("<%= j render "span" %>");
+  $("#notice").html("<%= t ".success" %>")
+<% else %>
+  $("#notice").html("<%= j render "shared/error_messages", object: @category %>")
+<% end %>

@@ -1,0 +1,8 @@
+<li id="ct-<%= category.id %>">
+  <%= render "span", :@category => category %>
+  <% if category.children.any?  %>
+    <ul>
+      <%= render category.children %>
+    </ul>
+   <% end %>
+</li>

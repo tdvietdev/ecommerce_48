@@ -1,0 +1,13 @@
+<%= form_for [:admin, @category], remote: true,
+  id: "edit_ct-#{@category.id}" do |f| %>
+  <div class="input-group">
+    <%= f.text_field :name, class: "form-control", id: "ta-#{@category.id}"  %>
+    <span class="input-group-btn">
+      <%= f.submit t(".submit"), class: "btn btn-default btn-success confirm" %>
+    </span>
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-default" id="ed_cancle-
+        <%= @category.id %>"><%= t ".cancle" %></button>
+    </span>
+  </div>
+<% end %>

@@ -55,10 +55,6 @@ en:
       home: "Home"
     help:
       help: "Help"
-  admin:
-    static_pages:
-      index:
-        index: "Home"
 
   sessions:
     login_form:
@@ -81,7 +77,7 @@ en:
       pass: "Password"
       confirm: "Password confirmation"
       submit: "Create my account"
-      member: Already a member ?
+      member: "Already a member ?"
       login: "Login"
 
     create:
@@ -97,9 +93,34 @@ en:
       index:
         danger: "Login please!"
         admin: "Please login admin account"
-
+        index: "Home"
     sessions:
       new:
         email: "Email"
         pass: "Password"
         submit: "Login"
+    categories:
+      index:
+        title: "Category Manager"
+        submit: "Submit"
+        danger: "Not found category!"
+      span:
+        add: "add"
+        edit: "edit"
+        del: "del"
+        confirm: "Are you sure?"
+      destroy:
+        success: "Delete success!"
+      update:
+        success: "Update success!"
+      create:
+        success: "Create success!"
+      new:
+        add: "add"
+        cancle: "cancle"
+      edit:
+        submit: "oke"
+        cancle: "cancle"
+  category:
+    has_children: "This category has childrent!"
+    has_product: "This category has products!"
