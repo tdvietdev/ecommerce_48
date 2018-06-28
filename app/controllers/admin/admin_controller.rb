@@ -10,4 +10,11 @@ class Admin::AdminController < ApplicationController
     flash[:danger] = t ".admin"
     redirect_to admin_login_path
   end
+
+  def logged_in_user
+    return if logged_in?
+    store_location
+    flash[:danger] = t ".danger"
+    redirect_to admin_root_path
+  end
 end
