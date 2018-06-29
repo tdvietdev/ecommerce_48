@@ -10,8 +10,12 @@ Rails.application.routes.draw do
     resources :static_pages
     resources :categories
     resources :products do
+      resources :images
       collection do
         post :import
+      end
+      member do
+        get :list_image
       end
     end
   end

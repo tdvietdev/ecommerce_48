@@ -16,6 +16,22 @@ class Product < ApplicationRecord
   scope :desc_create_at, ->{order(created_at: :desc)}
   scope :search, ->(key){where("name LIKE ? ", "%#{key}%") if key.present?}
   scope :select_attr, ->{select :id, :name, :quantity, :price, :category_id}
+
+  def avatar
+    images.get_avatar
+  end
+
+  def avatar_id
+    return 0 if images.get_avatar.nil?
+    images.get_avatar.id
+  end
+
+  def avatar= id
+    avatar&.update_attributes(avatar: false)
+    m_image = Image.find_by id: id
+    m_image.update_attributes avatar: true
+  end
+
   class << self
     def import file
       spreadsheet = open_spreadsheet file
