@@ -12,11 +12,16 @@
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <li><a href=""> <%= t ".profile" %></a></li>
-            <li><a href=""><%= t ".help" %></a></li>
-            <li><a href="">
-              <i class="fa fa-sign-out pull-right"></i> <%= link_to t(".logout"), admin_logout_path, method: :delete %>
-            </a></li>
+            <li>
+              <%= link_to admin_logout_path, method: :delete do%>
+                <%= t".logout" %><i class="fa fa-sign-out pull-right"></i>
+            <% end %>
+            </li>
+            <p class="text-center">
+              <%= link_to_unless I18n.locale == :en, t(".english"), set_language_en_path %>
+              |
+              <%= link_to_unless I18n.locale == :vi, t(".vietnam"), set_language_vi_path %>
+            </p>
           </ul>
         </li>
       </ul>

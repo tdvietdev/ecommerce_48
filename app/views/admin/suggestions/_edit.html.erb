@@ -1,0 +1,51 @@
+<h3 class="text-center"><%= t ".title" %></h3>
+<div class="row">
+    <div class="col-md-12">
+      <%= form_for [:admin, @suggestion] do |f| %>
+        <div class="form-group col-md-8 col-md-offset-2 text-center">
+          <%= f.label :status, class: "col-sm-2 control-label" %>
+          <div class="col-sm-5">
+            <%= f.select :status,
+              options_for_select(Suggestion.statuses.keys, @suggestion.status), {},
+              {class: "form-control"} %>
+          </div>
+          <div class="col-sm-5">
+            <%= f.submit t(".update"), class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <ul class="list-group col-md-6 col-md-offset-3">
+        <li class="list-group-item active"><%= t ".custom_info" %></li>
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th><%= t ".name" %></th>
+            <th> <%= @suggestion.user_name %> </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th><%= t ".phone" %></th>
+            <th> <%= @suggestion.user_phone %> </th>
+          </tr>
+          <tr>
+            <th><%= t ".email" %></th>
+            <th> <%= @suggestion.user_email %> </th>
+          </tr>
+          <tr>
+            <th><%= t ".address" %></th>
+            <th> <%= @suggestion.user_address %> </th>
+          </tr>
+          </tbody>
+        </table>
+        <hr>
+      </ul>
+      <div class="col-md-8 col-md-offset-2">
+        <div class="form-group">
+          <label for="comment" class="text-center">Comment:</label>
+          <p class="well well-sm"><%= @suggestion.content %></p>
+        </div>
+      </div>
+    </div>
+</div>

@@ -2068,7 +2068,14 @@ textarea.input {
     margin-top: 10px;
   }
 }
+.header-links{
+  .dropdown-menu{
+    background: #1E1F29;
+  }
+}
 
-.dropdown-menu{
-  background: #1E1F29;
+ul{
+  .dropdown-menu{
+    background: white;
+  }
 }

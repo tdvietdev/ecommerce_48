@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_url :name, url_attribute: :slug, sync_url: true
+
   enum permission: {admin: 1, staff: 2, customer: 3}
 
   has_many :rates
@@ -21,6 +23,12 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true,
     length: {minimum: Settings.user.password.min_length}, allow_nil: true
+
+  scope :desc_create_at, ->{order(created_at: :desc)}
+  scope :select_attr, ->{select :id, :name, :phone, :email, :permission}
+  scope :search, (lambda do |key|
+    where("name LIKE ? or phone LIKE ?", "%#{key}%", "%#{key}%") if key.present?
+  end)
 
   class << self
     def digest string
@@ -59,6 +67,18 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def visited_product? product
+    return histories.find_by(product_id: product.id).nil? ? false : true
+  end
+
+  def visited_product product
+    return histories.create product_id: product.id
+  end
+
+  def to_param
+    "#{id}-#{slug}"
   end
 
   private

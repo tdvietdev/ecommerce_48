@@ -1,0 +1,3 @@
+$(<%= "star#{@rate.score}" %>).prop("checked", true);
+$("#rating").html("<%= j render "products/rating" %>");
+$("#rating-information").html("<%= j render "products/rating_information" %>");

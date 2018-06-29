@@ -1,0 +1,4 @@
+<h2 class="text-center"><%= t ".title" %></h2>
+<%= render "form", promotion: @promotion %>
+<%= link_to t(".back"), admin_product_promotions_path %>
+<%= javascript_include_tag "admin/time_picker" %>

@@ -15,6 +15,10 @@ test:
   <<: *default
   database: ecommerce_48_test
 
+
 production:
   <<: *default
-  database: <%= ENV["DB_NAME"] %>
+  url: <%= ENV['DB_HOST'] %>
+  database: heroku_dfdfd5a989dd2bd
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>

@@ -43,6 +43,9 @@ en:
         home: "Home"
         dashboard: "Dashboard"
         categories: "Categories"
+        suggestion: "Suggestions"
+        products: "Products"
+        orders: "Orders"
         general: "General"
         users: "Users"
         new_user: "New User"
@@ -97,6 +100,7 @@ en:
       address: "Address: "
       change_profile: "Change profile"
       view_history: "View order history"
+      view_visited: "Recently Viewed Product"
       danger: "Please login"
   shared:
     error_messages:
@@ -113,7 +117,11 @@ en:
         email: "Email"
         pass: "Password"
         submit: "Login"
+      create:
+        warning: "Invalid email/password combination"
     categories:
+      update_branch:
+        success: "Update branch success!"
       index:
         title: "Category Manager"
         submit: "Submit"
@@ -142,6 +150,7 @@ en:
         price: "Price"
         quantity: "Quantity"
         category: "Category"
+        promotion: "Promotion"
         action: "Action"
         new_product: "New Product"
         import: "Import"
@@ -150,6 +159,12 @@ en:
       show:
         edit: "Edit"
         back: "Back"
+        exits_image: "Exit Images"
+        stt: "STT"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        category: "Category"
       new:
         back: "Back"
         title: "New Product"
@@ -171,10 +186,113 @@ en:
         success: "Update product success!"
       destroy:
         success: "Delete product success!"
-        error: "Delete product error! "
+        error: "Delete product error! This product belong to order!"
       import:
         success: "Import product success!"
         not_found: "File no found!"
+    images:
+      create:
+        success: "Upload image success!"
+      destroy:
+        success: "Dalete image success!"
+        comfirm: "Delete image? Are you sure?"
+      update:
+        success: "Image was successfully updated."
+    promotions:
+      show:
+        percent: "Percent"
+        start_date: "Start date"
+        end_date: "End date"
+        edit: "Edit"
+        back: "Back"
+      new:
+        back: "Back"
+        title: "New Promotion"
+      index:
+        stt: "STT"
+        new_product: "New promotion"
+        show_product: "Show product"
+        products: "Products Manager"
+        title: "Promotion Manager Of "
+        current_price: "Current price: "
+        percent: "Percent"
+        start_date: "Start date"
+        end_date: "End date"
+      edit:
+        title: "Editing Promotion"
+        back: "Back"
+      promotion:
+        confirm: "Are you sure?"
+      create:
+        success: "Created new promotion success"
+      update:
+        success: "Updated new promotion success"
+      destroy:
+        success: "Destroyed new promotion success"
+    orders:
+      index:
+        title: "List orders"
+        stt: "STT"
+        search: "Search"
+        order_date: "Order Date"
+        user_name: "UserName"
+        total_money: "Total money"
+        status: "Status"
+        detail: "Detail"
+        not_found: "Order Not Found"
+      edit:
+        title: "Edit Order"
+        update: "Update"
+        custom_info: "Custom info"
+        stt: "STT"
+        product_name: "Product Name"
+        price: "Price"
+        quantity: "Quantity"
+        amount: "Amount"
+        grand_total: "Grand total"
+        not_found: "Order Not Found"
+      update:
+        success: "Update order succes!"
+    users:
+      index:
+        stt: "STT"
+        name: "Name"
+        phone: "Phone"
+        email: "Email"
+        address: "Address"
+        role: "Role"
+        action: "Action"
+        search: "Search"
+        new_user: "New User"
+      show:
+        name: "Name"
+        phone: "Phone"
+        email: "Email"
+        address: "Address"
+        role: "Role"
+        back: "Back"
+      user:
+        confirm: "Delete user? Are you sure?"
+    suggestions:
+      index:
+        title: "Suggestion Manager"
+        stt: "STT"
+        user_name: "User name"
+        order_date: "Order date"
+        status: "Status"
+        detail: "Details"
+      edit:
+        update: "Submit"
+      update:
+        success: "Update status suggestions success !"
+  carts:
+    add_product:
+      not_found: "Product not found"
+  orders:
+    new:
+      danger: "You must add product to cart"
+    create:
+      success: "Ordered, please check your mail. "
   category:
     has_children: "This category has childrent!"
     has_product: "This category has products!"

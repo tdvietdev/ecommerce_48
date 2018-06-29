@@ -1,1 +1,13 @@
-<h1><%= t ".index" %></h1>
+<%= render "option" %>
+<%= render @options[params[:option].to_i] || "user", objects: @objects %>
+<div class="col-md-12 col-sm-6 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2><%= yield :title %>  <small>Sessions</small></h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <%= yield :chart %>
+    </div>
+  </div>
+</div>

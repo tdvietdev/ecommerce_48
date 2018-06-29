@@ -3,12 +3,18 @@ $(document).ready(function () {
     maxFilesize: 2,
     addRemoveLinks: true,
     success: function (file, response) {
-      $(file.previewElement).find('.dz-remove').attr('id', response.id);
-      $(file.previewElement).addClass('dz-success');
-      $('#product_avatar').append($('<option>', {value: response.id,
-        text: response.image.url.split("/").pop()}));
+      $(file.previewElement).find(".dz-remove").attr("id", response.id);
+      $(file.previewElement).addClass("dz-success");
+      $("#product_avatar").append($("<option>", {
+        value: response.id,
+        text: response.image.url.split("/").pop()
+      }));
+      $("#upload-status").html("<%= I18n.t("admin.images.create.success") %>")
     },
     removedfile: function (file) {
+      if (!confirm('<%= I18n.t("admin.images.destroy.comfirm") %>')) {
+        return
+      }
       var id = $(file.previewTemplate).find('.dz-remove').attr('id');
       $.ajax({
         headers: {
@@ -19,15 +25,21 @@ $(document).ready(function () {
         success: function (data) {
           image_id = data.id;
           $("#product_avatar option[value=" + image_id + "]").remove();
+          $("#upload-status").html("<%=
+            I18n.t("admin.images.destroy.success") %>")
+        },
+        error: function(xhr, status, error) {
+          var err = eval("(" + xhr.responseText + ")");
+          $("#upload-status").html(err.Message);
         }
       });
       var previewElement;
       return (previewElement = file.previewElement) != null ?
-          (previewElement.parentNode.removeChild(file.previewElement)) : (void 0);
+        (previewElement.parentNode.removeChild(file.previewElement)) : (void 0)
     },
     init: function () {
       var me = this;
-      $.get($(".edit_product").attr("action") + "/list_image", function (data) {
+      $.get($(".edit_product").attr("action") + "/list_image", function(data) {
         $.each(data.images, function (key, value) {
           if (data.images != undefined && data.images.length > 0) {
             me.emit("addedfile", value);

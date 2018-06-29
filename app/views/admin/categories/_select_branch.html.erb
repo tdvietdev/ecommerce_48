@@ -1,0 +1,10 @@
+<%= form_tag update_branch_admin_category_path(@category) , remote: true do %>
+<div class = "text-center">
+  <p>Select new branch</p>
+  <%= select_tag "option", options_for_select(
+    @list_branch),
+    {:class => "form-control", :include_blank => "Root"}
+  %>
+  <button type="submit" class="btn btn-success">Submit</button>
+</div>
+<% end %>

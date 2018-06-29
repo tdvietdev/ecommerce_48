@@ -11,26 +11,34 @@
         <h3><%= t ".general" %></h3>
         <ul class="nav side-menu">
           <li>
-            <a><i class="fa fa-home"></i> <%= t ".home" %>
-              <span class="fa fa-chevron-down"></span>
-            </a>
-            <ul class="nav child_menu">
-              <li><a href=""><%= t ".dashboard" %></a></li>
-            </ul>
+            <%= link_to admin_static_pages_path do%>
+              <i class="fa fa-reorder"></i> <%= t ".dashboard" %>
+            <% end %>
           </li>
           <li>
-            <a><i class="fa fa-edit"></i> <%= t ".users" %>
-              <span class="fa fa-chevron-down"></span>
-            </a>
-            <ul class="nav child_menu">
-              <li><a href="#"><%= t ".new_user" %></a></li>
-              <li><a href="#"><%= t ".list_user" %></a></li>
-            </ul>
+            <%= link_to admin_users_path do%>
+              <i class="fa fa-users"></i> <%= t ".users" %>
+            <% end %>
           </li>
           <li>
-            <a><i class="fa fa-desktop"></i> <%= t ".categories" %>
-              <span class="fa fa-chevron-down"></span>
-            </a>
+            <%= link_to admin_categories_path do%>
+              <i class="fa fa-cogs"></i> <%= t ".categories" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_suggestions_path do%>
+              <i class="fa fa-comments"></i> <%= t ".suggestion" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_products_path do%>
+              <i class="fa fa-print"></i> <%= t ".products" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_orders_path do%>
+              <i class="fa fa-send"></i> <%= t ".orders" %>
+            <% end %>
           </li>
         </ul>
       </div>

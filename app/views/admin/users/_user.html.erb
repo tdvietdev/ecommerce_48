@@ -1,0 +1,20 @@
+<tr>
+  <td><%= create_index params[:page], index, Settings.user.per_page %></td>
+  <th><%= user.name %></th>
+  <th><%= user.phone %></th>
+  <th><%= user.email %></th>
+  <th><%= user.permission %></th>
+  <th>
+    <%= link_to [:admin, user], remote: true do %>
+      <%= fa_icon "eye" %>
+    <% end %>
+  </th>
+  <th>
+    <% if !user.admin? %>
+      <%= link_to [:admin, user], method: :delete,
+        data: {confirm: t(".confirm")} do %>
+        <%= fa_icon "trash" %>
+      <% end %>
+    <% end %>
+  </th>
+</tr>

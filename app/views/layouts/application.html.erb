@@ -2,6 +2,13 @@
 <html>
 <head>
   <title><%= full_title(yield :title) %></title>
+  <meta property="og:url"           content="<%= request.original_url %>"/>
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="<%= full_title(yield :title) %>"/>
+  <meta property="og:description"   content="Web site sale print"/>
+  <% unless @product.nil? %>
+    <meta property="og:image"         content="<%= get_image_url(@product) %>"/>
+  <% end %>
   <%= render "layouts/rails_default" %>
   <%= render "layouts/shim" %>
 </head>
@@ -15,5 +22,6 @@
   <%= yield %>
   <%= render "layouts/footer" %>
   <%= debug(params) if Rails.env.development? %>
+  <%= javascript_include_tag "navbar.js" %>
 </body>
 </html>

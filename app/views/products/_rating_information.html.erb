@@ -1,0 +1,11 @@
+<div id="rating-information">
+  <div class="product-rating">
+    <% (1..@product.rating_average.round).each do |i| %>
+      <i class="fa fa-star"></i>
+    <% end %>
+    <% (1..(5-@product.rating_average.round)).each do |i| %>
+      <i class="fa fa-star-o"></i>
+    <% end %>
+  </div>
+  <span><%= @product.total_rate %><%= t ".review" %></span>
+</div>

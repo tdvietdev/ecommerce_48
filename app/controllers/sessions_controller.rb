@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     user = User.find_by email: params[:session][:email].downcase
     if user &.authenticate(params[:session][:password])
       log_in user
-      redirect_back_or root_url
+      redirect_ajax root_url
     else
       flash.now[:danger] = t ".warning"
       respond_to do |format|

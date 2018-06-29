@@ -1,0 +1,46 @@
+<div class="col-md-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_content">
+      <br/>
+      <form class="form-horizontal form-label-left">
+        <div class="form-group">
+          <label class="control-label col-md-1 col-sm-3 col-xs-12">Select</label>
+          <div class="col-md-10 col-sm-9 col-xs-12">
+            <div class="col-md-3 col-sm-5 col-xs-12">
+              <%= select_tag "option", options_for_select(
+                @options.map{|key, value| [value,key]},
+                :selected => params[:option]),
+                {:class => 'form-control', :include_blank => "Select a option"}
+              %>
+            </div>
+            <div class="col-md-9 col-sm-5 col-xs-12">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="promotion_start_date">From</label>
+                <div class="input-group date col-md-9 col-sm-6 col-xs-12" id="start_date">
+                  <input class="form-control" type="text" name="start_date" id="promotion_start_date" value="<%= params[:start_date] %>">
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="promotion_start_date">To</label>
+                <div class="input-group date col-md-9 col-sm-6 col-xs-12" id="end_date">
+                  <input class="form-control" type="text" name="end_date" id="promotion_end_date" value="<%= params[:end_date] %>">
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1 col-sm-12 col-xs-12">
+            <button type="submit" class="btn btn-success">Submit</button>
+          </div>
+        </div>
+        <div class="ln_solid"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag "admin/time_picker" %>

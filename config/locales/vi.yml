@@ -1,0 +1,279 @@
+vi:
+  layouts:
+    application:
+      base_title: "VP"
+    footer:
+      about_us: "About Us"
+      categories: "Categories"
+      hot_deals: "Hot deals"
+      information: "Information"
+      contact_us: "Contact Us"
+      service: "Service"
+      my_account: "My Account"
+      view_cart: "View Cart"
+    header:
+      my_account: "My Account"
+      search: "Search"
+      search_here: "Search here"
+      view_cart: "View Cart"
+      checkout: "Checkout"
+      menu: "Menu"
+      your_cart: "Your Cart"
+      profile: "Profile"
+      logout: "Log out"
+      login: "Log in"
+      settings: "Settings"
+      login: "Log in"
+      email: "Email"
+      pass: "Password"
+      submit: "Login"
+      new: "New member ?"
+      signup: "Sign up now!"
+    navbar:
+      home: "Trang chủ"
+      help: "Help"
+      categories: "Categories"
+      toggle: "Toggle navigation"
+    admin:
+      navbar:
+        profile: "Profile"
+        help: "Help"
+        logout: "Log Out"
+      slidebar:
+        home: "Home"
+        dashboard: "Trang chủ"
+        categories: "Categories"
+        suggestion: "Suggestions"
+        products: "Products"
+        orders: "Orders"
+        general: "General"
+        users: "Users"
+        new_user: "New User"
+        list_user: "List User"
+  static_pages:
+    home:
+      home: "Home"
+    help:
+      help: "Help"
+  sessions:
+    login_form:
+      login: "Log in"
+      email: "Email"
+      pass: "Password"
+      submit: "Login"
+      new: "New member ?"
+      signup: "Sign up now!"
+    create:
+      warning: "Invalid email/password combination"
+  users:
+    signup_form:
+      text: "Create Account"
+      name: "Name"
+      email: "Email"
+      phone: "Phone number"
+      address: "Address"
+      pass: "Password"
+      confirm: "Password confirmation"
+      submit: "Create my account"
+      member: "Already a member ?"
+      login: "Login"
+    create:
+      welcome: "Welcome VP"
+    edit:
+      text: "Update profile"
+      name: "Name"
+      email: "Email"
+      phone: "Phone number"
+      address: "Address"
+      pass: "Password"
+      confirm: "Password confirmation"
+      submit: "Update profile"
+    update:
+      updated: "Updated"
+    find_user:
+      notfound: "User not found"
+    show:
+      profile: "Profile: "
+      name: "Name: "
+      email: "Email: "
+      phone: "Phone number: "
+      address: "Address: "
+      change_profile: "Change profile"
+      view_history: "View order history"
+      view_visited: "Recently Viewed Product"
+      danger: "Please login"
+  shared:
+    error_messages:
+      err: "error"
+      text: "The form contains"
+  admin:
+    static_pages:
+      index:
+        danger: "Login please!"
+        admin: "Please login admin account"
+        index: "Home"
+    sessions:
+      new:
+        email: "Email"
+        pass: "Password"
+        submit: "Login"
+    categories:
+      index:
+        title: "Category Manager"
+        submit: "Submit"
+        danger: "Not found category!"
+      span:
+        add: "add"
+        edit: "edit"
+        del: "del"
+        confirm: "Are you sure?"
+      destroy:
+        success: "Delete success!"
+      update:
+        success: "Update success!"
+      create:
+        success: "Create success!"
+      new:
+        add: "add"
+        cancle: "cancle"
+      edit:
+        submit: "oke"
+        cancle: "cancle"
+    products:
+      index:
+        stt: "STT"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        category: "Category"
+        promotion: "Promotion"
+        action: "Action"
+        new_product: "New Product"
+        import: "Import"
+        search: "Search"
+        h_import: "Import from Excel file"
+      show:
+        edit: "Edit"
+        back: "Back"
+        exits_image: "Exit Images"
+        stt: "STT"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        category: "Category"
+      new:
+        back: "Back"
+        title: "New Product"
+      product:
+        confirm: "Are you sure?"
+      show:
+        id: "ID"
+        name: "Name"
+        price: "Price"
+        quantity: "Quantity"
+        action: "Action"
+      edit:
+        show: "Show"
+        back: "Back"
+        title: "Editing product"
+      create:
+        success: "Create product success!"
+      update:
+        success: "Update product success!"
+      destroy:
+        success: "Delete product success!"
+        error: "Delete product error! "
+      import:
+        success: "Import product success!"
+        not_found: "File no found!"
+    images:
+      create:
+        success: "Upload image success!"
+      destroy:
+        success: "Dalete image success!"
+        comfirm: "Delete image? Are you sure?"
+      update:
+        success: "Image was successfully updated."
+    promotions:
+      show:
+        percent: "Percent"
+        start_date: "Start date"
+        end_date: "End date"
+        edit: "Edit"
+        back: "Back"
+      new:
+        back: "Back"
+        title: "New Promotion"
+      index:
+        stt: "STT"
+        new_product: "New promotion"
+        show_product: "Show product"
+        products: "Products Manager"
+        title: "Promotion Manager Of "
+        current_price: "Current price: "
+        percent: "Percent"
+        start_date: "Start date"
+        end_date: "End date"
+      edit:
+        title: "Editing Promotion"
+        back: "Back"
+      promotion:
+        confirm: "Are you sure?"
+      create:
+        success: "Created new promotion success"
+      update:
+        success: "Updated new promotion success"
+      destroy:
+        success: "Destroyed new promotion success"
+    orders:
+      index:
+        title: "List orders"
+        stt: "STT"
+        search: "Search"
+        order_date: "Order Date"
+        user_name: "UserName"
+        total_money: "Total money"
+        status: "Status"
+        detail: "Detail"
+        not_found: "Order Not Found"
+      edit:
+        title: "Edit Order"
+        update: "Update"
+        custom_info: "Custom info"
+        stt: "STT"
+        product_name: "Product Name"
+        price: "Price"
+        quantity: "Quantity"
+        amount: "Amount"
+        grand_total: "Grand total"
+        not_found: "Order Not Found"
+      update:
+        success: "Update order succes!"
+    users:
+      index:
+        stt: "STT"
+        name: "Name"
+        phone: "Phone"
+        email: "Email"
+        address: "Address"
+        role: "Role"
+        action: "Action"
+        search: "Search"
+        new_user: "New User"
+      show:
+        name: "Name"
+        phone: "Phone"
+        email: "Email"
+        address: "Address"
+        role: "Role"
+        back: "Back"
+      user:
+        confirm: "Delete user? Are you sure?"
+    suggestions:
+      edit:
+        update: "Submit"
+  category:
+    has_children: "This category has childrent!"
+    has_product: "This category has products!"
+  product:
+    exits_order: "This product belong to order!"

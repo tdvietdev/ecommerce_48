@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :find_user, :logged_in_user, only: %i(edit update show)
-
+  before_action :load_categories
   def new
     respond_to do |format|
       format.js
@@ -33,6 +33,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def order_history
+    @orders = Order.where(user_id: current_user.id)
+  end
   private
 
   def user_params

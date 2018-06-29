@@ -2,9 +2,8 @@
 //= require jquery2.js
 //= require bootstrap
 //= require activestorage
-//= require turbolinks
-//= require navbar
 //= require slick.min
+
+//= require jquery.zoom.min
 //= require nouislider.min
 //= require main
-//= require_self
