@@ -1,0 +1,38 @@
+<div class="right" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".name" %></th>
+              <th> <%= @product.name %> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th><%= t ".id" %></th>
+              <th> <%= @product.id %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".price" %></th>
+              <th> <%= @product.price %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".quantity" %></th>
+              <th> <%= @product.quantity %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".category" %></th>
+              <th> <%= @product.category.get_path %> </th>
+            </tr>
+            </tbody>
+          
+          </table>
+          <%= link_to t(".back"), admin_products_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

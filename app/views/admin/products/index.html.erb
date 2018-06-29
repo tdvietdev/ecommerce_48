@@ -1,0 +1,44 @@
+<%= render "shared/admin_modal" %>
+<div class="right" role="main" style="min-height: 1672px;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-12 text-center">
+            <%= form_tag admin_products_path, method: "get",
+              enforce_utf8: false do %>
+              <%= text_field_tag :search, params[:search], class: "form-control" %>
+              <%= submit_tag t(".search"), :name => nil,
+                class: "btn btn-success", width: "10px" %>
+            <% end %>
+          </div>
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".stt" %></th>
+              <th><%= t ".name" %></th>
+              <th><%= t ".price" %></th>
+              <th><%= t ".category" %></th>
+              <th colspan="4"><%= t ".action" %></th>
+            </tr>
+            </thead>
+              <tbody>
+              <% @products.each_with_index do |product, index| %>
+                <%= render "product", product: product, index: index %>
+              <% end %>
+              </tbody>
+          </table>
+          <div class="text-center">
+            <%= paginate @products, theme: "twitter-bootstrap-3" %>
+          </div>
+          <%= link_to t(".new_product"), new_admin_product_path, remote: true %>
+          <h4><%= t ".h_import" %></h4>
+          <%= form_tag import_admin_products_path, multipart: true do %>
+            <%= file_field_tag :file %>
+            <%= submit_tag t(".import"), class: "btn btn-success" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

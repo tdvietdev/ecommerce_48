@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::AdminController
-  before_action :load_category, except: %i(index)
+  before_action :load_category, except: %i(index create)
 
   def index
     @category = Category.new
@@ -50,6 +50,6 @@ class Admin::CategoriesController < Admin::AdminController
     @category = Category.find_by id: params[:id]
     return if @category
     flash[:danger] = t ".danger"
-    redirect admin_categories_path
+    redirect_to admin_categories_path
   end
 end

@@ -65,7 +65,7 @@ class Category < ApplicationRecord
     return if children.empty?
     errors[:base] << I18n.t("category.has_children")
     throw :abort
-    end
+  end
 
   def check_have_product
     return if products.empty?
