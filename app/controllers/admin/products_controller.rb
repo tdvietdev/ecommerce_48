@@ -28,12 +28,15 @@ class Admin::ProductsController < Admin::AdminController
   end
 
   def show
+    @images = @product.images
     respond_to do |format|
       format.js
     end
   end
 
-  def edit; end
+  def edit
+    @images = @product.images
+  end
 
   def update
     if @product.update_attributes product_params
@@ -64,6 +67,19 @@ class Admin::ProductsController < Admin::AdminController
       flash[:success] = t(".success")
     end
     redirect_to admin_products_path
+  end
+
+  def list_image
+    images = []
+    @product.images.each do |i_image|
+      m_image = {
+        id: i_image.id,
+        name: i_image.image.url.to_s.split("/").last,
+        src: i_image.image.thumb.url
+      }
+      images.push(m_image)
+    end
+    render json: {images: images}
   end
 
   private
