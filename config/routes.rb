@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :products do
       resources :images
+      resources :promotions
       collection do
         post :import
       end

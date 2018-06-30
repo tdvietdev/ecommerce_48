@@ -142,6 +142,7 @@ en:
         price: "Price"
         quantity: "Quantity"
         category: "Category"
+        promotion: "Promotion"
         action: "Action"
         new_product: "New Product"
         import: "Import"
@@ -189,6 +190,37 @@ en:
         comfirm: "Delete image? Are you sure?"
       update:
         success: "Image was successfully updated."
+    promotions:
+      show:
+        percent: "Percent"
+        start_date: "Start date"
+        end_date: "End date"
+        edit: "Edit"
+        back: "Back"
+      new:
+        back: "Back"
+        title: "New Promotion"
+      index:
+        stt: "STT"
+        new_product: "New promotion"
+        show_product: "Show product"
+        products: "Products Manager"
+        title: "Promotion Manager Of "
+        current_price: "Current price: "
+        percent: "Percent"
+        start_date: "Start date"
+        end_date: "End date"
+      edit:
+        title: "Editing Promotion"
+        back: "Back"
+      promotion:
+        confirm: "Are you sure?"
+      create:
+        success: "Created new promotion success"
+      update:
+        success: "Updated new promotion success"
+      destroy:
+        success: "Destroyed new promotion success"
   category:
     has_children: "This category has childrent!"
     has_product: "This category has products!"

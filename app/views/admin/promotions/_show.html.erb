@@ -1,0 +1,29 @@
+<div class="right" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".percent" %></th>
+              <th> <%= @promotion.percent %> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th><%= t ".start_date" %></th>
+              <th> <%= @promotion.start_date %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".end_date" %></th>
+              <th> <%= @promotion.end_date %> </th>
+            </tr>
+            </tbody>
+          </table>
+          <%= link_to t(".back"), admin_product_promotions_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

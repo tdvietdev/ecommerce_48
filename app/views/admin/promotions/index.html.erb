@@ -1,0 +1,37 @@
+<% provide :title, t(".title") + @product.name  %>
+<h2 class="text-center"><%= t(".title") + @product.name %></h2>
+<div class="right" role="main" style="min-height: 1672px;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".stt" %></th>
+              <th><%= t ".percent" %></th>
+              <th><%= t ".start_date" %></th>
+              <th><%= t ".end_date" %></th>
+              <th colspan="3"></th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @promotions.each_with_index do |promotion, index| %>
+                <%= render "promotion", promotion: promotion, index: index %>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="text-center">
+            <%= paginate @promotions, theme: "twitter-bootstrap-3" %>
+          </div>
+          <br>
+          <%= link_to t(".new_product"), new_admin_product_promotion_path,
+            remote: true %><br>
+          <%= link_to t(".show_product"), admin_product_path(@product),
+            remote: true %><br>
+          <%= link_to t(".products"), admin_products_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

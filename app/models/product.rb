@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :category
   has_many :images, dependent: :delete_all
-  has_many :promotions
+  has_many :promotions, include: :pr
   has_many :histories
   has_many :order_details
   has_many :rates
@@ -30,6 +30,14 @@ class Product < ApplicationRecord
     avatar&.update_attributes(avatar: false)
     m_image = Image.find_by id: id
     m_image.update_attributes avatar: true
+  end
+
+  def percent_promotion
+    promotions.between(Time.now.to_s(:db))&.sum(&:percent) || 0
+  end
+
+  def current_price
+    (price * (1 - percent_promotion.to_f / 100)).round
   end
 
   class << self

@@ -10,9 +10,6 @@ class Admin::ProductsController < Admin::AdminController
 
   def new
     @product = Product.new
-    respond_to do |format|
-      format.js
-    end
   end
 
   def create
