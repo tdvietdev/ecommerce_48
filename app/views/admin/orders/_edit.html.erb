@@ -1,0 +1,61 @@
+<h3 class="text-center"><%= t ".title" %></h3>
+<hr>
+<div class="row">
+  <section class="panel">
+    <div class="col-md-12">
+      <%= form_for [:admin, @order] do |f| %>
+        <div class="form-group col-md-6 col-md-offset-3 text-center">
+          <%= f.label :status, class: "col-sm-2 control-label" %>
+          <div class="col-sm-5">
+            <%= f.select :status,
+              options_for_select(Order.statuses.keys, @order.status), {},
+              {class: "form-control"} %>
+          </div>
+          <div class="col-sm-5">
+            <%= f.submit t(".update"), class: "btn btn-success" %>
+          </div>
+        </div>
+      <% end %>
+      <br>
+      <ul class="list-group col-md-6 col-md-offset-3">
+        <li class="list-group-item active"><%= t ".custom_info" %></li>
+        <li class="list-group-item">
+          <%= t ".name" %> : <%= @order.user_name %>
+        </li>
+        <li class="list-group-item">
+          <%= t ".email" %> : <%= @order.user_email %>
+        </li>
+        <li class="list-group-item">
+          <%= t ".phone" %> : <%= @order.user_phone %>
+        </li>
+        <li class="list-group-item">
+          <%= t "o.address" %> : <%= @order.user_address %>
+        </li>
+      </ul>
+      <div class="form-group col-md-6 col-md-offset-3">
+        <table class="table table-striped table-responsive-md btn-table">
+          <thead>
+          <tr>
+            <th><%= t ".stt" %></th>
+            <th><%= t ".product_name" %></th>
+            <th><%= t ".price" %></th>
+            <th><%= t ".quantity" %></th>
+            <th><%= t ".amount" %></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%#= render partial: "order_detail", collection: @order_details %>
+          <% @order_details.each_with_index do |order_detail, index| %>
+            <%= render "order_detail", order_detail: order_detail, index: index %>
+          <% end %>
+          <tr>
+            <th><%= t ".grand_total" %></th>
+            <td colspan="3"></td>
+            <td><%= @order.grand_total %></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>

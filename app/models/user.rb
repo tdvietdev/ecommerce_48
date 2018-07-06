@@ -22,6 +22,12 @@ class User < ApplicationRecord
   validates :password, presence: true,
     length: {minimum: Settings.user.password.min_length}, allow_nil: true
 
+  scope :desc_create_at, ->{order(created_at: :desc)}
+  scope :select_attr, ->{select :id, :name, :phone, :email, :permission}
+  scope :search, (lambda do |key|
+    where("name LIKE ? or phone LIKE ?", "%#{key}%", "%#{key}%") if key.present?
+  end)
+
   class << self
     def digest string
       cost =

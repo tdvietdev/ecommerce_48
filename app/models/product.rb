@@ -1,10 +1,12 @@
 class Product < ApplicationRecord
   belongs_to :category
   has_many :images, dependent: :delete_all
-  has_many :promotions, include: :pr
+  has_many :promotions
   has_many :histories
   has_many :order_details
   has_many :rates
+  has_many :orders, through: :order_detail
+
   before_destroy :check_exits_order
 
   validates :name, length: {
@@ -16,6 +18,14 @@ class Product < ApplicationRecord
   scope :desc_create_at, ->{order(created_at: :desc)}
   scope :search, ->(key){where("name LIKE ? ", "%#{key}%") if key.present?}
   scope :select_attr, ->{select :id, :name, :quantity, :price, :category_id}
+  scope :order_by_create_at, -> {order created_at: :desc}
+  scope :order_by_name, -> {order name: :asc}
+  scope :order_by_price_increase, -> {order price: :asc}
+  scope :order_by_price_decrease, -> {order price: :desc}
+  scope :filter_by_min_price, ->(min_price){where("price >= ?", min_price) if min_price.present?}
+  scope :filter_by_max_price, ->(max_price){where("price <= ?", max_price) if max_price.present?}
+  scope :by_product_id, ->(product_ids){where(id: product_ids)}
+  scope :by_id, ->(product_id){where(id: product_id)}
 
   def avatar
     images.get_avatar
@@ -38,6 +48,24 @@ class Product < ApplicationRecord
 
   def current_price
     (price * (1 - percent_promotion.to_f / 100)).round
+  end
+
+  def count_rating score
+    rates.where(score: score).count
+  end
+
+  def total_rate
+    rates.count
+  end
+
+  def rate_ratio score
+    (((count_rating score) / total_rate.to_f).round 1) * 100
+  end
+
+  def rating_average
+    return 0 if rates.blank?
+    total_score = rates.sum "score"
+    (total_score.to_f / total_rate).round(1)
   end
 
   class << self

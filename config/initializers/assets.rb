@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(admin/custom.js admin/dropzone_config.js.erb ckeditor/*
-admin/time_picker.js)
+admin/time_picker.js filter_price.js rating.js facebook_sdk.js rate.js navbar.js cart.js)

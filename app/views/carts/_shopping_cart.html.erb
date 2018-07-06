@@ -1,0 +1,28 @@
+<div class="header-ctn">
+  <div class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+      <i class="fa fa-shopping-cart"></i>
+      <span><%= t ".your_cart" %></span>
+      <div class="qty">
+        <%= total_quantity %>
+      </div>
+    </a>
+    <div class="cart-dropdown">
+      <div class="cart-list">
+        <%= render partial: "carts/cart" %>
+      </div>
+      <div class="cart-btns">
+        <%= link_to new_order_path do %>
+          <%= t(".checkout") %>
+          <i class="fa fa-arrow-circle-right"></i>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="menu-toggle">
+    <a href="#">
+      <i class="fa fa-bars"></i>
+      <span><%= t ".menu" %></span>
+    </a>
+  </div>
+</div>

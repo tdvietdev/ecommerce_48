@@ -221,6 +221,52 @@ en:
         success: "Updated new promotion success"
       destroy:
         success: "Destroyed new promotion success"
+    orders:
+      index:
+        title: "List orders"
+        stt: "STT"
+        order_date: "Order Date"
+        user_name: "UserName"
+        total_money: "Total money"
+        status: "Status"
+        detail: "Detail"
+        not_found: "Order Not Found"
+      edit:
+        title: "Edit Order"
+        update: "Update"
+        custom_info: "Custom info"
+        stt: "STT"
+        product_name: "Product Name"
+        price: "Price"
+        quantity: "Quantity"
+        amount: "Amount"
+        grand_total: "Grand total"
+        not_found: "Order Not Found"
+      update:
+        success: "Update order succes!"
+    users:
+      index:
+        stt: "STT"
+        name: "Name"
+        phone: "Phone"
+        email: "Email"
+        address: "Address"
+        role: "Role"
+        action: "Action"
+        search: "Search"
+        new_user: "New User"
+      show:
+        name: "Name"
+        phone: "Phone"
+        email: "Email"
+        address: "Address"
+        role: "Role"
+        back: "Back"
+      user:
+        confirm: "Delete user? Are you sure?"
+    suggestions:
+      edit:
+        update: "Submit"
   category:
     has_children: "This category has childrent!"
     has_product: "This category has products!"

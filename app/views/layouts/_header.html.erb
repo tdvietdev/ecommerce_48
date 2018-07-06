@@ -55,31 +55,7 @@
           </div>
         </div>
         <div class="col-md-3 clearfix">
-          <div class="header-ctn">
-            <div class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                <i class="fa fa-shopping-cart"></i>
-                <span><%= t ".your_cart" %></span>
-                <div class="qty"></div>
-              </a>
-              <div class="cart-dropdown">
-                <div class="cart-list"></div>
-                <div class="cart-summary"></div>
-                <div class="cart-btns">
-                  <a href="#"><%= t ".view_cart" %></a>
-                  <a href="#"><%= t ".checkout" %>
-                    <i class="fa fa-arrow-circle-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="menu-toggle">
-              <a href="#">
-                <i class="fa fa-bars"></i>
-                <span><%= t ".menu" %></span>
-              </a>
-            </div>
-          </div>
+          <%= render "carts/shopping_cart" %>
         </div>
       </div>
     </div>

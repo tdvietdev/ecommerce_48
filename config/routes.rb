@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     resources :static_pages
     resources :categories
+    resources :orders, except: [:new, :create, :destroy]
+    resources :users
+    resources :suggestions
     resources :products do
       resources :images
       resources :promotions
@@ -28,4 +31,14 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   resources :users
   resources :categories
+  resources :products
+  resources :rates
+  resources :carts do
+    collection do
+      post :update_item
+      post :add_product
+      delete :delete_item
+    end
+  end
+  resources :orders
 end

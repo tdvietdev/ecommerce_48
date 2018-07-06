@@ -1,0 +1,15 @@
+<li id="ctu-<%= category.id %>">
+  <% if category.children.any? %>
+    <li>
+      <%= link_to category do %>
+        <%= truncate category.name, length: 30 %>
+        <span class="caret"></span>
+      <% end %>
+      <ul class="dropdown-menu">
+        <%= render category.children %>
+      </ul>
+    </li>
+  <% else %>
+    <li><%= link_to (truncate category.name, length: 30), category %></li>
+  <% end %>
+</li>

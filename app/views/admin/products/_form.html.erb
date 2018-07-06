@@ -49,7 +49,7 @@
               </label>
               <div class="col-md-6 col-sm-6 col-xs-12">
                 <%= select_tag "product[avatar]",
-                  options_from_collection_for_select(@images,
+                  options_from_collection_for_select(@images ||= [],
                   :id, :name, @product.avatar_id), class: "form-control" %>
               </div>
             </div>

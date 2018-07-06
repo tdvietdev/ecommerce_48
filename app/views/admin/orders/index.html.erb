@@ -1,0 +1,32 @@
+<% provide :title, t(".title") %>
+<h1 class="text-center"><%= t ".title" %></h1>
+<div class="right" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th><%= t ".stt" %></th>
+                <th><%= t ".user_name" %></th>
+                <th><%= t ".order_date" %></th>
+                <th><%= t ".total_money" %></th>
+                <th><%= t ".status" %></th>
+                <th><%= t ".detail" %></th>
+              </tr>
+            </thead>
+              <tbody>
+              <% @orders.each_with_index do |order, index| %>
+                <%= render "order", order: order, index: index %>
+              <% end %>
+              </tbody>
+          </table>
+          <div class="text-center">
+            <%= paginate @orders, theme: "twitter-bootstrap-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

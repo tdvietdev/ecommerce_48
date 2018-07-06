@@ -77,6 +77,7 @@ class Admin::PromotionsController < Admin::AdminController
   end
 
   def promotion_params
-    params.require(:promotion).permit :percent, :start_date, :end_date, :product_id
+    params.require(:promotion).permit :percent, :start_date, :end_date,
+      :product_id
   end
 end

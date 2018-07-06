@@ -47,6 +47,27 @@ class Category < ApplicationRecord
     end
   end
 
+  def cate_parent_tree
+    temp_cat = self
+    array_category = Array.new
+    loop do
+      break if temp_cat.parent.nil?
+      array_category.unshift(temp_cat.parent)
+      temp_cat = temp_cat.parent
+    end
+    array_category
+  end
+
+  def get_all_product
+    categories_id = Category.where("code LIKE ?", "#{code}%")
+                            .map(&:id)
+    Product.where(category_id: categories_id)
+  end
+
+  def get_max_price
+    products.maximum(:price)
+  end
+
   private
   def get_code_value
     m_arr = Category.select(:code).where(parent_code: parent_code).to_a
