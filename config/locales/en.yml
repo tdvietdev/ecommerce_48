@@ -43,6 +43,9 @@ en:
         home: "Home"
         dashboard: "Dashboard"
         categories: "Categories"
+        suggestion: "Suggestions"
+        products: "Products"
+        orders: "Orders"
         general: "General"
         users: "Users"
         new_user: "New User"
@@ -97,6 +100,7 @@ en:
       address: "Address: "
       change_profile: "Change profile"
       view_history: "View order history"
+      view_visited: "Recently Viewed Product"
       danger: "Please login"
   shared:
     error_messages:
@@ -225,6 +229,7 @@ en:
       index:
         title: "List orders"
         stt: "STT"
+        search: "Search"
         order_date: "Order Date"
         user_name: "UserName"
         total_money: "Total money"

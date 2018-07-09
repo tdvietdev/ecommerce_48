@@ -1,0 +1,35 @@
+<h1>Hi<%= @order.user_name %></h1>
+<p>You have ordered at PV Computer your order information as follows</p>
+<h1>Customer infomation</h1>
+<table>
+  <tr>
+    <td>Name</td>
+    <td><%= @order.user_name %></td>
+  </tr>
+  <tr>
+    <td>Phone</td>
+    <td><%= @order.phone %></td>
+  </tr>
+  <tr>
+    <td>Address</td>
+    <td><%= @order.address%></td>
+  </tr>
+</table>
+<div>
+  <div class="section-title text-center">
+    <h3 class="title">Your Order</h3>
+  </div>
+  <div class="order-summary">
+    <div class="order-col">
+      <div><strong>PRODUCT</strong></div>
+      <div><strong>TOTAL</strong></div>
+    </div>
+    <div class="order-products">
+      <%= render partial: "order_mailer/item", collection: @order.order_details %>
+    </div>
+    <div class="order-col">
+      <div><strong>TOTAL</strong></div>
+      <div><strong class="order-total"><%= @order.grand_total %> </strong></div>
+    </div>
+  </div>
+</div>

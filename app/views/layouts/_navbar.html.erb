@@ -16,7 +16,7 @@
 
             <!-- Left nav -->
             <ul class="nav navbar-nav">
-              <li><a href="#"><%= t ".home"%></a></li>
+              <li><%= link_to t(".home"), root_path %></a></li>
               <li><a href="#"><%= t ".categories" %><span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <%= render @categories %>

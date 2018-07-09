@@ -20,8 +20,8 @@ $('.input-number').each(function () {
   })
 });
 
-var priceInputMax = document.getElementById('price-max'),
-  priceInputMin = document.getElementById('price-min');
+var priceInputMax = document.getElementById('select-max'),
+  priceInputMin = document.getElementById('select-min');
 
 priceInputMax.addEventListener('change', function () {
   updatePriceSlider($(this).parent(), this.value)
@@ -44,7 +44,7 @@ function updatePriceSlider(elem, value) {
 var priceSlider = document.getElementById('price-slider');
 if (priceSlider) {
   noUiSlider.create(priceSlider, {
-    start: [0, $("#price-max").val()],
+    start: [$("#select-min").val(), $("#select-max").val()],
     connect: true,
     step: 1,
     range: {

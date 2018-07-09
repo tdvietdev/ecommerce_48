@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_url :name, url_attribute: :slug, sync_url: true
+
   enum permission: {admin: 1, staff: 2, customer: 3}
 
   has_many :rates
@@ -65,6 +67,18 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def visited_product? product
+    return histories.find_by(product_id: product.id).nil? ? false : true
+  end
+
+  def visited_product product
+    return histories.create product_id: product.id
+  end
+
+  def to_param
+    "#{id}-#{slug}"
   end
 
   private

@@ -9,3 +9,5 @@
 //= require ckeditor/config.js
 //= require moment
 //= require bootstrap-datetimepicker
+//= require Chart.bundle
+//= require chartkick

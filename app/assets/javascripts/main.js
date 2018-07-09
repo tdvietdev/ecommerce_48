@@ -89,3 +89,6 @@ $(document).on('turbolinks:load', (function () {
     $('#product-main-img .product-preview').zoom();
   }
 }));
+function show_md() {
+  $("#myModal").modal('show')
+}

@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  acts_as_url :name, url_attribute: :slug, sync_url: true
+
   belongs_to :category
   has_many :images, dependent: :delete_all
   has_many :promotions
@@ -17,7 +19,7 @@ class Product < ApplicationRecord
 
   scope :desc_create_at, ->{order(created_at: :desc)}
   scope :search, ->(key){where("name LIKE ? ", "%#{key}%") if key.present?}
-  scope :select_attr, ->{select :id, :name, :quantity, :price, :category_id}
+  scope :select_attr, ->{select :id, :name, :quantity, :price, :category_id, :created_at}
   scope :order_by_create_at, -> {order created_at: :desc}
   scope :order_by_name, -> {order name: :asc}
   scope :order_by_price_increase, -> {order price: :asc}
@@ -26,6 +28,21 @@ class Product < ApplicationRecord
   scope :filter_by_max_price, ->(max_price){where("price <= ?", max_price) if max_price.present?}
   scope :by_product_id, ->(product_ids){where(id: product_ids)}
   scope :by_id, ->(product_id){where(id: product_id)}
+  scope :top_revenue, (lambda do
+    joins(:order_details)
+      .select("products.name as name, sum(order_details.quantity * order_details.price) as total")
+      .group(:product_id)
+  end)
+
+  scope :top_order, (lambda do
+    joins(:order_details)
+      .select("products.id, products.price, products.created_at, products.name as name, count(order_details.id) as total")
+      .group(:product_id)
+  end)
+
+  def new?
+    (Time.now - created_at).to_i / 1.day <= 7
+  end
 
   def avatar
     images.get_avatar
@@ -44,6 +61,10 @@ class Product < ApplicationRecord
 
   def percent_promotion
     promotions.between(Time.now.to_s(:db))&.sum(&:percent) || 0
+  end
+
+  def have_promotion?
+    percent_promotion.positive?
   end
 
   def current_price
@@ -88,6 +109,10 @@ class Product < ApplicationRecord
       else raise file.original_filename
       end
     end
+  end
+
+  def to_param
+    "#{id}-#{slug}"
   end
 
   private

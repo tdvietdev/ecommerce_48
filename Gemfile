@@ -3,12 +3,14 @@ git_source(:github){|repo| "https://github.com/#{repo}.git"}
 
 ruby "2.4.2"
 
+gem "stringex"
 gem "bcrypt", "~> 3.1.7"
 gem "bootsnap", ">= 1.1.0", require: false
 gem "bootstrap-kaminari-views"
 gem "bootstrap-sass", "3.3.7"
 gem "bootstrap3-datetimepicker-rails", "~> 4.17.47"
 gem "carrierwave"
+gem "chartkick"
 gem "ckeditor"
 gem "coffee-rails", "~> 4.2"
 gem "config"
@@ -19,6 +21,7 @@ gem "font-awesome-rails", "~> 4.7", ">= 4.7.0.1"
 gem "jbuilder", "~> 2.5"
 gem "jquery-rails", "~> 4.3", ">= 4.3.3"
 gem "kaminari"
+gem "groupdate"
 gem "mini_magick", "~> 4.8"
 gem "momentjs-rails", ">= 2.9.0"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
@@ -49,3 +52,7 @@ group :test do
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+  gem "mysql2", ">= 0.4.4", "< 0.6.0"
+end

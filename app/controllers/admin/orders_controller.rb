@@ -2,7 +2,8 @@ class Admin::OrdersController < Admin::AdminController
   before_action :load_order, only: %i(edit update show)
 
   def index
-    @orders = Order.select_attr.includes(:user)
+    @orders = Order.search(params[:search])
+                   .select_attr.includes(:user)
                    .includes(:order_details)
                    .page(params[:page])
                    .sort_by_status.sort_by_create_at

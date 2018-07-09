@@ -12,9 +12,15 @@
         <%= render partial: "carts/cart" %>
       </div>
       <div class="cart-btns">
-        <%= link_to new_order_path do %>
-          <%= t(".checkout") %>
-          <i class="fa fa-arrow-circle-right"></i>
+        <% if logged_in? %>
+          <%= link_to new_order_path do %>
+            <%= t(".checkout") %>
+            <i class="fa fa-arrow-circle-right"></i>
+          <% end %>
+        <% else%>
+          <a class="fa fa-arrow-circle-right" data-toggle="modal" data-target="#myModal" onclick="show_md()">
+            Login for checkout
+          </a>
         <% end %>
       </div>
     </div>
@@ -26,3 +32,6 @@
     </a>
   </div>
 </div>
+<script>
+
+</script>

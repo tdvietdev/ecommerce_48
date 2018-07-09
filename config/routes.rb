@@ -2,13 +2,21 @@ Rails.application.routes.draw do
   root "static_pages#home"
   get "static_pages/home"
   get "static_pages/help"
+  get "set_language/en"
+  get "set_language/vi"
+
   namespace :admin do
     root "static_pages#index"
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     resources :static_pages
-    resources :categories
+    resources :categories do
+      member do
+        get :select_branch
+        post :update_branch
+      end
+    end
     resources :orders, except: [:new, :create, :destroy]
     resources :users
     resources :suggestions
@@ -29,7 +37,12 @@ Rails.application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-  resources :users
+  resources :users do
+    resources :histories, only: [:index]
+    member do
+      get :order_history
+    end
+  end
   resources :categories
   resources :products
   resources :rates
@@ -41,4 +54,5 @@ Rails.application.routes.draw do
     end
   end
   resources :orders
+  resources :suggestions
 end

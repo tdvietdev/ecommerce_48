@@ -39,19 +39,18 @@
       <div class="row">
         <div class="col-md-3">
           <div class="header-logo">
-            <a href="#" class="logo">
-              <img src="" alt="">
-            </a>
+          <%= link_to root_path, class: "logo" do %>
+              <%= image_tag "logo1.png" %>
+          <% end %>
           </div>
         </div>
         <div class="col-md-6">
           <div class="header-search">
-            <form>
-              <select class="input-select">
-              </select>
-              <input class="input" placeholder="<%= t ".search_here" %>">
-              <button class="search-btn"><%= t ".search" %></button>
-            </form>
+            <%= form_tag products_path, method: "get",
+                           enforce_utf8: false do %>
+              <%= text_field_tag :search, params[:search], class: "input", placeholder: t(".search_here") %>
+              <button type="submit" class="search-btn"><%= t ".search" %></button>
+            <% end %>
           </div>
         </div>
         <div class="col-md-3 clearfix">

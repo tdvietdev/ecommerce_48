@@ -1,9 +1,13 @@
 class Category < ApplicationRecord
+  cattr_accessor :skip_callbacks
+
+  acts_as_url :name, url_attribute: :slug, sync_url: true
+
   belongs_to :parent, class_name: Category.name, optional: true,
     foreign_key: :parent_code, primary_key: :code
   has_many :products
 
-  before_save :set_code
+  before_save :set_code, :unless => :skip_callbacks
   before_destroy :check_have_children, :check_have_product
   validates :name, length: {
     minimum: Settings.category.name_min,
@@ -38,11 +42,42 @@ class Category < ApplicationRecord
     m_path
   end
 
+  def move_branch new_id = nil
+    @des_branch = Category.find_by id: new_id
+    #get add child
+    old_code = code
+    old_childs = get_all_child
+    if new_id.empty?
+      self.parent_code = "0"
+    else
+      self.parent_code = @des_branch.code
+    end
+    self.code = get_code_value
+    Category.transaction do
+      self.save
+      old_childs.each do |child|
+        child.code = child.update_parent_code old_code, code
+        child.save
+      end
+    end
+  end
+
+  def get_all_child
+    Category.where("code LIKE ? AND id <> ?", "#{code}%", id)
+  end
+
   class << self
     def get_list_path
       arr = all
       arr.map do |cate|
         {id: cate.id, path: cate.get_path} if cate.children.empty?
+      end.compact
+    end
+
+    def get_sellect category
+      arr = where("code NOT LIKE ?", "#{category.parent_code}%")
+      arr.map do |cate|
+        [cate.get_path, cate.id]
       end.compact
     end
   end
@@ -68,14 +103,25 @@ class Category < ApplicationRecord
     products.maximum(:price)
   end
 
-  private
   def get_code_value
     m_arr = Category.select(:code).where(parent_code: parent_code).to_a
     m_arr.map!{|cate| cate.code.split("_").last.to_i}
-    i_code = get_min_value m_arr
+    i_code = get_min_value m_arr.sort!
     return i_code.to_s.rjust(2, "0") if parent_code == "0"
     parent_code + "_" + i_code.to_s.rjust(2, "0")
   end
+
+  def update_parent_code old_code, new_code
+    self.code = code.sub old_code, new_code
+    self.parent_code = parent_code.sub old_code, new_code
+  end
+
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+  private
+
 
   def set_code
     self.parent_code = "0" if parent_code.nil?

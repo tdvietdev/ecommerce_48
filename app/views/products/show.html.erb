@@ -23,8 +23,10 @@
           <h2 class="product-name"><%= @product.name %></h2>
           <%= render "rating_information" %>
           <div>
-            <h3 class="product-price"><%= @product.price %>
-              <del class="product-old-price"><%= @product.price %></del>
+            <h3 class="product-price"><%= @product.current_price %>
+              <% if @product.have_promotion? %>
+                <del class="product-old-price"><%= @product.price %></del>
+              <% end %>
             </h3>
             <span class="product-available"><%= t ".instock" %></span>
           </div>
@@ -61,7 +63,7 @@
             <div id="tab2" class="tab-pane fade in active">
               <div class="row">
                 <div class="col-md-12">
-                  <p><%= @product.detail %></p>
+                  <p><%= @product.detail.html_safe %></p>
                 </div>
               </div>
             </div>

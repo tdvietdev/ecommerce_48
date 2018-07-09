@@ -15,6 +15,13 @@ class Order < ApplicationRecord
 
   scope :sort_by_status, ->{order :status}
   scope :sort_by_create_at, ->{order :created_at}
+  scope :sum_money, ->{sum :grand_total}
+  scope :search, (lambda do |key|
+    where("phone LIKE ? or address LIKE ?", "%#{key}%", "%#{key}%") if key.present?
+  end)
+  def filter start_date, end_date
+    filter_start_date(start_date).filter_end_date(end_date)
+  end
 
   validates :address, presence: true
   validates :phone, presence: true

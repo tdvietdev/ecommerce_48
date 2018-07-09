@@ -1,16 +1,32 @@
-<div class="container">
-  <div class="user-information">
-    <h3><%= t ".profile" %></h3>
-    <div class="info-content">
-      <ul>
-        <li><b><%= t ".name" %></b><%= current_user.name %></li></br>
-        <li><b><%= t ".email" %></b><%= current_user.email %></li></br>
-        <li><b><%= t ".phone" %></b><%= current_user.phone %></li></br>
-        <li><b><%= t ".address" %></b><%= current_user.address %></li></br>
-        <br/>
-        <li class="btn btn-link"><%= link_to t(".change_profile"), edit_user_path %></li>
-        <li class="btn btn-link"><%= link_to t(".view_history") %></li>
-      </ul>
+<div class="container well">
+  <div class="col-md-offset-2 col-md-4">
+    <div class="user-information">
+      <h3><%= t ".profile" %></h3>
+      <div class="info-content">
+        <ul>
+          <li><b><%= t ".name" %></b><%= current_user.name %></li>
+          </br>
+          <li><b><%= t ".email" %></b><%= current_user.email %></li>
+          </br>
+          <li><b><%= t ".phone" %></b><%= current_user.phone %></li>
+          </br>
+          <li><b><%= t ".address" %></b><%= current_user.address %></li>
+          </br>
+          <br/>
+
+        </ul>
+      </div>
     </div>
+  </div>
+  <div class="col-md-4">
+    <li class="btn btn-link"><%= link_to t(".change_profile"), edit_user_path %></li>
+    <br>
+    <li class="btn btn-link">
+      <%= link_to t(".view_history"), order_history_user_path %>
+    </li>
+    <br>
+    <li class="btn btn-link">
+      <%= link_to t(".view_visited"), user_histories_path(current_user) %>
+    </li>
   </div>
 </div>
