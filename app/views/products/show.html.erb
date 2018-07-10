@@ -80,7 +80,7 @@
                 <div class="col-md-6">
                   <div id="reviews">
                     <div class="fb-comments"
-                    data-href="https://localhost:3000/product/<%= @product.id %>"
+                    data-href="<%= request.original_url %>"
                     data-width="555" data-numposts="5">
                   </div>
                   </div>

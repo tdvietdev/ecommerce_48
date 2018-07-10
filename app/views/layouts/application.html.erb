@@ -2,7 +2,7 @@
 <html>
 <head>
   <title><%= full_title(yield :title) %></title>
-  <meta property="og:url"           content="https://www.your-domain.com/your-page.html"/>
+  <meta property="og:url"           content="<%= request.original_url %>"/>
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="<%= full_title(yield :title) %>"/>
   <meta property="og:description"   content="Your description"/>
