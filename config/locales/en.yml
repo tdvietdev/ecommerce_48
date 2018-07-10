@@ -117,6 +117,8 @@ en:
         email: "Email"
         pass: "Password"
         submit: "Login"
+      create:
+        warning: "Invalid email/password combination"
     categories:
       index:
         title: "Category Manager"
