@@ -7,7 +7,7 @@
   <meta property="og:title"         content="<%= full_title(yield :title) %>"/>
   <meta property="og:description"   content="Web site sale print"/>
   <% unless @product.nil? %>
-    <meta property="og:image"         content="<%= product_avatar(@product) %>"/>
+    <meta property="og:image"         content="<%= get_image_url(@product) %>"/>
   <% end %>
   <%= render "layouts/rails_default" %>
   <%= render "layouts/shim" %>
