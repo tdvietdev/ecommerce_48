@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
           order_id: @order.id, quantity: val, price: price_item(key.to_i))
       end
     end
-    # OrderMailer.order_infomation(@order).deliver_now
+    OrderMailer.order_infomation(@order).deliver_now
     session[:cart] = nil
     flash[:success] = t "controller.orders.create_order_success"
     redirect_to root_path
