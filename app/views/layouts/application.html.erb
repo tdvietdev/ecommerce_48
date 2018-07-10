@@ -2,6 +2,11 @@
 <html>
 <head>
   <title><%= full_title(yield :title) %></title>
+  <meta property="og:url"           content="https://www.your-domain.com/your-page.html"/>
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="<%= full_title(yield :title) %>"/>
+  <meta property="og:description"   content="Your description"/>
+  <meta property="og:image"         content="https://shrouded-stream-40111.herokuapp.com/assets/product01-17812ba88e9c6ca84a3ef7057f77ab0f6a526c52b8f8aa90dcbdac61e5e2e02b.png"/>
   <%= render "layouts/rails_default" %>
   <%= render "layouts/shim" %>
 </head>
