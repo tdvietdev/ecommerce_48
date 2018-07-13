@@ -184,7 +184,7 @@ en:
         success: "Update product success!"
       destroy:
         success: "Delete product success!"
-        error: "Delete product error! "
+        error: "Delete product error! This product belong to order!"
       import:
         success: "Import product success!"
         not_found: "File no found!"
@@ -272,6 +272,13 @@ en:
       user:
         confirm: "Delete user? Are you sure?"
     suggestions:
+      index:
+        title: "Suggestion Manager"
+        stt: "STT"
+        user_name: "User name"
+        order_date: "Order date"
+        status: "Status"
+        detail: "Details"
       edit:
         update: "Submit"
   category:

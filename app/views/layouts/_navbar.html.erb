@@ -23,6 +23,15 @@
                 </ul>
               </li>
             </ul>
+
+            <!-- Right nav -->
+            <ul class="nav navbar-nav navbar-right">
+              <% if logged_in? %>
+                <li>
+                  <%= link_to "Suggestion", new_suggestion_path %>
+                </li>
+              <% end %>
+            <ul>
           </div>
         </div>
       </div>
