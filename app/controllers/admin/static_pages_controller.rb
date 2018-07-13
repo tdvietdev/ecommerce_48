@@ -14,7 +14,8 @@ class Admin::StaticPagesController < Admin::AdminController
       User.filter(params[:start_date], params[:end_date])
           .group_by_day(:created_at).count
     when "2"
-      Product.top_order.map{|product| [product.name, product.total]}
+      Product.top_order(params[:start_date], params[:end_date])
+             .map{|product| [product.name, product.total]}
     when "3"
       Order.filter(params[:start_date], params[:end_date])
         .group_by_day(:created_at).sum_money
@@ -25,7 +26,7 @@ class Admin::StaticPagesController < Admin::AdminController
       Product.top_revenue.map{|product| [product.name, product.total]}
     else
       Order.filter(params[:start_date], params[:end_date])
-          .group_by_day(:created_at).sum_money
+           .group_by_day(:created_at).sum_money
     end
   end
 end
