@@ -8,7 +8,7 @@
       <%= form_tag update_item_carts_path , method: :post, remote: true, id: "update_item"+item.id.to_s  do %>
         <input type="text" name="key" hidden value="<%= item.id %>">
         <div class="cart_quantity">
-          <%= number_field_tag("quantity",  quantity(item), option={class: "item_quantity", min: 1, onchange: "myFunction(#{item.id.to_s})"})%> x <%= item.current_price %>
+          <%= number_field_tag("quantity#{item.id.to_s}",  quantity(item), option={class: "item_quantity", min: 1, onchange: "myFunction(#{item.id.to_s})"})%> x <%= item.current_price %>
         </div>
       <% end %>
     </h4>

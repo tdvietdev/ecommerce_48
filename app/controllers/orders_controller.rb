@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :load_categories, :load_cart
+  before_action :logged_in_user, only: %i(new create)
   def new
     if @cart.empty?
       flash[:danger] = "Ban chua chon hang"
