@@ -283,6 +283,14 @@ en:
         update: "Submit"
       update:
         success: "Update status suggestions success !"
+  carts:
+    add_product:
+      not_found: "Product not found"
+  orders:
+    new:
+      danger: "You must add product to cart"
+    create:
+      success: "Ordered, please check your mail. "
   category:
     has_children: "This category has childrent!"
     has_product: "This category has products!"
