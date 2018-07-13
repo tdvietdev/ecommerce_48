@@ -107,6 +107,14 @@ en:
       err: "error"
       text: "The form contains"
   admin:
+    suggestions:
+      index:
+        title: "Suggestion Manager"
+        stt: "STT"
+        user_name: "User name"
+        order_date: "Order date"
+        status: "Status"
+        detail: "Details"
     static_pages:
       index:
         danger: "Login please!"
