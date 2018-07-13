@@ -281,6 +281,8 @@ en:
         detail: "Details"
       edit:
         update: "Submit"
+      update:
+        success: "Update status suggestions success !"
   category:
     has_children: "This category has childrent!"
     has_product: "This category has products!"
