@@ -26,7 +26,7 @@ class Admin::StaticPagesController < Admin::AdminController
       Product.top_revenue.map{|product| [product.name, product.total]}
     else
       Order.filter(params[:start_date], params[:end_date])
-           add.group_by_day(:created_at).sum_money
+           .group_by_day(:created_at).sum_money
     end
   end
 end
