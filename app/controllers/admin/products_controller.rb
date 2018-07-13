@@ -51,7 +51,7 @@ class Admin::ProductsController < Admin::AdminController
       if @product.destroy
         format.html{redirect_to admin_products_url, notice: t(".success")}
       else
-        format.html{redirect_to admin_products_url, notice: t(".success")}
+        format.html{redirect_to admin_products_url, notice: t(".error")}
       end
     end
   end
