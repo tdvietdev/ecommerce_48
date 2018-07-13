@@ -76,7 +76,7 @@ class Category < ApplicationRecord
 
     def get_sellect category
       if category.root?
-        arr = where("code NOT LIKE ?", "#{category.code}")
+        arr = where("code NOT LIKE ? OR code NOT LIKE ?", "#{category.code}", "#{category.parent_code}%")
       else
         arr = where("code NOT LIKE ?", "#{category.parent_code}%")
       end
