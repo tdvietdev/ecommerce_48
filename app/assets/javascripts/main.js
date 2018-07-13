@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', (function () {
+$(document).ready(function () {
   "use strict"
   $('.menu-toggle > a').on('click', function (e) {
     e.preventDefault();
@@ -88,7 +88,9 @@ $(document).on('turbolinks:load', (function () {
   if (zoomMainProduct) {
     $('#product-main-img .product-preview').zoom();
   }
-}));
+});
 function show_md() {
-  $("#myModal").modal('show')
+  $('#myModal').on('hidden', function () {
+    $('#myModalNew').modal('show')
+  })
 }

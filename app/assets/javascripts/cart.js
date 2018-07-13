@@ -4,6 +4,7 @@ function myFunction(id) {
   $.ajax({
       url:"/carts/update_item",
       type:'post',
+      async: true,
       beforeSend: function(xhr) {
           xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
       },

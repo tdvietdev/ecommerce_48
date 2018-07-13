@@ -120,6 +120,8 @@ en:
       create:
         warning: "Invalid email/password combination"
     categories:
+      update_branch:
+        success: "Update branch success!"
       index:
         title: "Category Manager"
         submit: "Submit"

@@ -48,7 +48,8 @@ class Admin::CategoriesController < Admin::AdminController
 
   def update_branch
     @category.move_branch params[:option]
-    redirect_to admin_categories_path
+    flash[:success] = t(".success")
+    redirect_ajax admin_categories_path
   end
 
   private

@@ -30,7 +30,7 @@ class Admin::PromotionsController < Admin::AdminController
     @promotion = Promotion.new promotion_params
     if @promotion.save
       flash[:success] = t(".success")
-      redirect_to admin_product_promotions_path
+      redirect_ajax admin_product_promotions_path
     else
       respond_to{|format| format.js}
     end
@@ -39,7 +39,7 @@ class Admin::PromotionsController < Admin::AdminController
   def update
     if @promotion.update_attributes promotion_params
       flash[:success] = t(".success")
-      redirect_to admin_product_promotions_path
+      redirect_ajax admin_product_promotions_path
     else
       respond_to do |format|
         format.js

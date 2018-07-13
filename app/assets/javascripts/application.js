@@ -3,7 +3,7 @@
 //= require bootstrap
 //= require activestorage
 //= require slick.min
-//= require turbolinks
+
 //= require jquery.zoom.min
 //= require nouislider.min
 //= require main

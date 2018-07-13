@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   include CartsHelper
   include OrdersHelper
   include HistoriesHelper
+  include ApplicationHelper
 
   private
   def set_locale

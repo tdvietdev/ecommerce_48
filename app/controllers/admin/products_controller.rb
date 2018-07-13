@@ -16,7 +16,7 @@ class Admin::ProductsController < Admin::AdminController
     @product = Product.new product_params
     if @product.save
       flash[:success] = t(".success")
-      redirect_to admin_products_path
+      redirect_ajax admin_products_path
     else
       respond_to do |format|
         format.js
@@ -38,7 +38,7 @@ class Admin::ProductsController < Admin::AdminController
   def update
     if @product.update_attributes product_params
       flash[:success] = t(".success")
-      redirect_to admin_products_path
+      redirect_ajax admin_products_path
     else
       respond_to do |format|
         format.js
