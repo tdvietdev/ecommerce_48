@@ -3,10 +3,10 @@ class Product < ApplicationRecord
 
   belongs_to :category
   has_many :images, dependent: :delete_all
-  has_many :promotions
-  has_many :histories
+  has_many :promotions, dependent: :delete_all
+  has_many :histories, dependent: :delete_all
   has_many :order_details
-  has_many :rates
+  has_many :rates, dependent: :delete_all
   has_many :orders, through: :order_detail
 
   before_destroy :check_exits_order
@@ -118,7 +118,7 @@ class Product < ApplicationRecord
   private
   def check_exits_order
     return if order_details.empty?
-    errors[:base] << t(".exits_order")
+    errors[:base] << I18n.t("product.exits_order")
     throw :abort
   end
 end

@@ -182,7 +182,7 @@ en:
         success: "Update product success!"
       destroy:
         success: "Delete product success!"
-        error: "Delete product error! "
+        error: "Delete product error! This product belong to order!"
       import:
         success: "Import product success!"
         not_found: "File no found!"
