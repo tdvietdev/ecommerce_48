@@ -75,7 +75,11 @@ class Category < ApplicationRecord
     end
 
     def get_sellect category
-      arr = where("code NOT LIKE ?", "#{category.parent_code}%")
+      if category.root?
+        arr = where("code NOT LIKE ?", "#{category.code}")
+      else
+        arr = where("code NOT LIKE ?", "#{category.parent_code}%")
+      end
       arr.map do |cate|
         [cate.get_path, cate.id]
       end.compact
