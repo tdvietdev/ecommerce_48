@@ -41,7 +41,7 @@ class Product < ApplicationRecord
     where("products.created_at >= ?", date) if date.present?
   end)
 
-  scope :top_order, (lambda do |start_date, end_date|
+  scope :top_order, (lambda do |start_date = nil, end_date = nil|
     joins(:order_details)
       .select("products.id, products.price, products.created_at, products.name as name, count(order_details.id) as total")
       .filter_end(end_date).filter_start(start_date)
