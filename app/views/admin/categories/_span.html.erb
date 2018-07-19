@@ -12,3 +12,7 @@
   data: {confirm: t(".confirm")}, remote: true do %>
   <%= fa_icon "trash" %>
 <% end %>
+  |
+<%= link_to select_branch_admin_category_path(@category), remote: true do %>
+  <%= fa_icon "arrow-circle-right" %>
+<% end %>

@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12">
+    <ul class="breadcrumb-tree">
+      <li><%= link_to "Home", root_path %></li>
+      <% @category.cate_parent_tree.each do |cate| %>
+        <li><%= link_to cate.name, cate %></li>
+      <% end %>
+      <li> <%= link_to @category.name, @category %></li>
+
+    </ul>
+  </div>
+</div>

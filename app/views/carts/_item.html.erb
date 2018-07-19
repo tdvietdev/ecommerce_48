@@ -1,0 +1,22 @@
+<div class="product-widget">
+  <div class="product-img">
+    <%= product_avatar item %>
+  </div>
+  <div class="product-body">
+    <h3 class="product-name"><%= link_to item.name, item %></h3>
+    <h4 class="product-price">
+      <%= form_tag update_item_carts_path , method: :post, remote: true, id: "update_item"+item.id.to_s  do %>
+        <input type="text" name="key" hidden value="<%= item.id %>">
+        <div class="cart_quantity">
+          <%= number_field_tag("quantity",  quantity(item), option={id: "a#{item.id.to_s}",class: "item_quantity", min: 1, onchange: "myFunction(#{item.id.to_s})"})%> x <%= item.current_price %>
+        </div>
+      <% end %>
+    </h4>
+  </div>
+  <%= button_to delete_item_carts_path, remote: true, method: :delete,
+    data: { confirm: "Are you sure" }, class: "delete" do  %>
+    <i class="fa fa-close"></i>
+    <input type="text" name="key" hidden value="<%= item.id %>">
+  <% end %>
+</div>
+<%= javascript_include_tag "cart.js"%>

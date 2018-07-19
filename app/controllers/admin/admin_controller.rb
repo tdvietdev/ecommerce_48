@@ -15,6 +15,6 @@ class Admin::AdminController < ApplicationController
     return if logged_in?
     store_location
     flash[:danger] = t ".danger"
-    redirect_to admin_root_path
+    redirect_to admin_login_path
   end
 end

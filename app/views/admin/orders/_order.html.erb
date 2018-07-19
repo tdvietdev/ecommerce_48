@@ -1,0 +1,13 @@
+<tr>
+  <td><%= create_index params[:page], index, Settings.order.per_page %></td>
+  <td><%= link_to order.user_name, order.user %></td>
+  <td><%=  order.created_at.strftime("%F %T") %></td>
+  <td><%=  order.grand_total %></td>
+  <td><%= order.status %></td>
+  <td>
+    <%= link_to edit_admin_order_path(order.id),
+      method: :get, remote: true do %>
+      <%= fa_icon "eye" %>
+    <% end %>
+  </td>
+</tr>

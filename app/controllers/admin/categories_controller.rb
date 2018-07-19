@@ -19,7 +19,9 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   def update
+    Category.skip_callbacks = true
     @category.update_attributes category_params
+    Category.skip_callbacks = false
     respond_to do |format|
       format.js
     end
@@ -40,8 +42,17 @@ class Admin::CategoriesController < Admin::AdminController
     end
   end
 
-  private
+  def select_branch
+    @list_branch = Category.get_sellect @category
+  end
 
+  def update_branch
+    @category.move_branch params[:option]
+    flash[:success] = t(".success")
+    redirect_ajax admin_categories_path
+  end
+
+  private
   def category_params
     params.require(:category).permit :id, :name, :code, :parent_code
   end

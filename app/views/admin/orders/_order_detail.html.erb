@@ -1,0 +1,9 @@
+<tr>
+  <td><%= create_index params[:page], index, Settings.order.per_page %></td>
+  <td><%= order_detail.product.name %></td>
+  <td><%= order_detail.price %></td>
+  <td><%= order_detail.quantity %></td>
+  <td>
+    <%= order_detail.quantity * order_detail.price %>
+  </td>
+</tr>

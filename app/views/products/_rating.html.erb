@@ -1,0 +1,80 @@
+<div id="rating">
+  <div class="rating-avg">
+    <span><%= @product.rating_average %></span>
+    <div class="rating-stars">
+      <% (1..@product.rating_average.round).each do |i| %>
+        <i class="fa fa-star"></i>
+      <% end %>
+      <% (1..(5-@product.rating_average.round)).each do |i| %>
+        <i class="fa fa-star-o"></i>
+      <% end %>
+    </div>
+  </div>
+  <ul class="rating">
+    <li>
+      <div class="rating-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+      </div>
+      <div class="rating-progress">
+        <div style="width: <%= @product.rate_ratio 5 %>%;"></div>
+      </div>
+      <span class="sum"><%= @product.count_rating 5 %></span>
+    </li>
+    <li>
+      <div class="rating-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <div class="rating-progress">
+        <div style="width: <%= @product.rate_ratio 4 %>%;"></div>
+      </div>
+      <span class="sum"><%= @product.count_rating 4 %></span>
+    </li>
+    <li>
+      <div class="rating-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <div class="rating-progress">
+        <div style="width: <%= @product.rate_ratio 3 %>%;"></div>
+      </div>
+      <span class="sum"><%= @product.count_rating 3 %></span>
+    </li>
+    <li>
+      <div class="rating-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <div class="rating-progress">
+        <div style="width: <%= @product.rate_ratio 2 %>%;"></div>
+      </div>
+      <span class="sum"><%= @product.count_rating 2 %></span>
+    </li>
+    <li>
+      <div class="rating-stars">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+        <i class="fa fa-star-o"></i>
+      </div>
+      <div class="rating-progress">
+        <div style="width: <%= @product.rate_ratio 1 %>%;"></div>
+      </div>
+      <span class="sum"><%= @product.count_rating 1 %></span>
+    </li>
+  </ul>
+</div>

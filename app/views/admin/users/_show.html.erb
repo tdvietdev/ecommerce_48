@@ -1,0 +1,38 @@
+<div class="right" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".name" %></th>
+              <th> <%= @user.name %> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th><%= t ".phone" %></th>
+              <th> <%= @user.phone %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".email" %></th>
+              <th> <%= @user.email %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".address" %></th>
+              <th> <%= @user.address %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".role" %></th>
+              <th> <%= @user.permission %> </th>
+            </tr>
+            </tbody>
+          
+          </table>
+          <%= link_to t(".back"), admin_users_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

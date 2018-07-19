@@ -1,0 +1,55 @@
+<div id="breadcrumb" class="section">
+  <div class="container">
+    <%= render "shared/breadcumb" %>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div id="aside" class="col-md-3">
+        <div class="aside">
+          <h3 class="aside-title">Price</h3>
+          <%= form_tag  category_path, method: "get" do %>
+            <div class="price-filter">
+              <div id="price-slider"></div>
+                <div class="input-number price-min">
+                  <%= number_field_tag("price_min", params[:price_min] || 0 ,option={id: "select-min"}) %>
+                  <span class="qty-up">+</span>
+                  <span class="qty-down">-</span>
+                </div> -
+                <div class="input-number price-max">
+                  <%= number_field_tag("price_max", params[:price_max] || Product.maximum(:price), option={id: "select-max"}) %>
+                  <span class="qty-up">+</span>
+                  <span class="qty-down">-</span>
+                </div>
+                <br></br>
+                <button class="btn btn-primary center-block" type="submit">Submit</button>
+              <input type="number" hidden id ="price-max" value="<%= Product.maximum(:price)  %>">
+          </div>
+        </div>
+      </div>
+      <div id="store" class="col-md-9">
+        <div class="store-filter clearfix">
+          <div class="store-sort">
+            <label>
+              Sort By:
+                <%= select_tag "sort",
+                options_for_select([["Default", "1"], ["Name", "2"],
+                ["Price Increase", "3"], ["Price Decrease", "4"]],
+                params[:sort] || 1 ),
+                class: "input-select", onchange: "submit()"%>
+        <% end %>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <%= render @products %>
+        </div>
+        <div class="store-filter clearfix">
+          <%= paginate @products, theme: 'twitter-bootstrap-3' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag "filter_price.js" %>

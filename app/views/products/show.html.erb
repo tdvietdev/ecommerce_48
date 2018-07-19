@@ -1,0 +1,133 @@
+<% provide :title, @product.name %>
+<div id="breadcrumb" class="section">
+  <div class="container">
+    <%= render "shared/breadcumb" %>
+  </div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-push-2">
+        <div id="product-main-img">
+          <%= render partial: "products/image", collection: @product.images %>
+        </div>
+      </div>
+
+      <div class="col-md-2  col-md-pull-5">
+        <div id="product-imgs">
+          <%= render partial: "products/image", collection: @product.images %>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+        <div class="product-details">
+          <h2 class="product-name"><%= @product.name %></h2>
+          <%= render "rating_information" %>
+          <div>
+            <h3 class="product-price"><%= @product.current_price %>
+              <% if @product.have_promotion? %>
+                <del class="product-old-price"><%= @product.price %></del>
+              <% end %>
+            </h3>
+            <span class="product-available"><%= t ".instock" %></span>
+          </div>
+
+          <div class="add-to-cart">
+            <%= form_tag add_product_carts_path , method: :post, remote: true  do %>
+              <input type="text" name="key" hidden value="<%= @product.id %>">
+              <div class="qty-label">
+                <%= t ".quantity" %>
+                  <div class="input-number">
+                    <input type="number" name="value" value="1" min="0" step="1" >
+                    <span class="qty-up">+</span>
+                    <span class="qty-down">-</span>
+                  </div>
+              </div>
+              <button class="add-to-cart-btn" type="submit">
+                <i class="fa fa-shopping-cart"></i>
+                <%= t ".add" %>
+              </button>
+              <% end %>
+          </div>
+        </div>
+        <div class="fb-share-button"
+             data-href=""
+             data-layout="button_count">
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <div id="product-tab">
+          <ul class="tab-nav">
+            <li class="active"><a data-toggle="tab" href="#tab2"><%= t ".detail" %></a></li>
+            <li><a data-toggle="tab" href="#tab3">
+            <%= t ".reviews" %></a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div id="tab2" class="tab-pane fade in active">
+              <div class="row">
+                <div class="col-md-12">
+                  <p><%= @product.detail.html_safe %></p>
+                </div>
+              </div>
+            </div>
+
+            <div id="tab3" class="tab-pane fade in">
+              <div class="row">
+                <div class="col-md-3">
+                  <%= render "rating" %>
+                </div>
+                <div class="col-md-6">
+                  <div id="reviews">
+                    <div class="fb-comments"
+                    data-href="<%= request.original_url %>"
+                    data-width="555" data-numposts="5">
+                  </div>
+                  </div>
+                </div>
+
+                <div class="col-md-3">
+                <% if logged_in? %>
+                  <div id="review-form">
+                    <span><%= t ".your_rating" %> </span>
+                    <%= form_for Rate.new, html: {:class => "review-form"},
+                      remote: true do |f| %>
+                      <div><%= hidden_field_tag :product_id, @product.id %></div>
+                      <div><%= hidden_field_tag :user_id, current_user.id %></div>
+                      <div class="input-rating">
+                        <div class="stars">
+                          <%= f.radio_button :score, 5, id: "star5", class: "star" %>
+                          <label for="star5"></label>
+                          <%= f.radio_button :score, 4, id: "star4" , class: "star"%>
+                          <label for="star4"></label>
+                          <%= f.radio_button :score, 3, id: "star3", class: "star" %>
+                          <label for="star3"></label>
+                          <%= f.radio_button :score, 2, id: "star2", class: "star" %>
+                          <label for="star2"></label>
+                          <%= f.radio_button :score, 1, id: "star1" , class: "star"%>
+                          <label for="star1"></label>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <span><%= t ".login_please" %></span>
+                  <button class="header-text btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    <%= t ".login" %>
+                  </button>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input type="text" id="score_rate" hidden value="<%= @rate ? @rate.score : 0 %>">
+<%= javascript_include_tag "rating.js" %>
+<%= javascript_include_tag "facebook_sdk.js" %>
+<%= javascript_include_tag "rate" %>
+<%= javascript_include_tag "filter_price.js" %>

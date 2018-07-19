@@ -10,10 +10,18 @@ user:
 
   password:
     min_length: 8
+  index:
+    per_page: 7
 category:
   name_max: 70
   name_min: 3
 product:
   max_name: 200
   min_name: 3
+  per_page: 7
+promotion:
+  per_page: 7
+order:
+  per_page: 7
+suggestion:
   per_page: 7
