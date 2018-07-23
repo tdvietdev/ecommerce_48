@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {registrations: "users/registrations",
+    sessions: "users/sessions"}
   root "static_pages#home"
   get "static_pages/home"
   get "static_pages/help"
@@ -7,9 +9,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "static_pages#index"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
+    devise_for :users, skip: [:sessions]
+    as :user do
+      get "login", to: 'sessions#new'
+      post "login", to: 'sessions#create'
+      delete "logout", to: 'sessions#destroy'
+    end
     resources :static_pages
     resources :categories do
       member do
@@ -33,11 +38,6 @@ Rails.application.routes.draw do
     resources :roles
   end
 
-  get "/signup", to: "users#new"
-  post "/signup", to: "users#create"
-  get "/login", to: "sessions#new"
-  post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#destroy"
   resources :users do
     resources :histories, only: [:index]
     member do

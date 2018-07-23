@@ -2,7 +2,7 @@
   <div id="top-header">
     <div class="container">
       <ul class="header-links pull-right">
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-user-o"></i><%= t ".my_account" %><b class="caret"></b>
@@ -11,7 +11,7 @@
               <li><%= link_to t(".profile"), current_user %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to t(".logout"), logout_path, method: :delete %>
+                <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
               </li>
             </ul>
           </li>
@@ -26,7 +26,7 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <%= render "sessions/login_form" %>
+                <%= render "users/sessions/login_form" %>
               </div>
             </div>
           </div>

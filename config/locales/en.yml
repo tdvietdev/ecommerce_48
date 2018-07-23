@@ -55,30 +55,31 @@ en:
       home: "Home"
     help:
       help: "Help"
-  sessions:
-    login_form:
-      login: "Log in"
-      email: "Email"
-      pass: "Password"
-      submit: "Login"
-      new: "New member ?"
-      signup: "Sign up now!"
-    create:
-      warning: "Invalid email/password combination"
   users:
-    signup_form:
-      text: "Create Account"
-      name: "Name"
-      email: "Email"
-      phone: "Phone number"
-      address: "Address"
-      pass: "Password"
-      confirm: "Password confirmation"
-      submit: "Create my account"
-      member: "Already a member ?"
-      login: "Login"
-    create:
-      welcome: "Welcome VP"
+    sessions:
+      login_form:
+        login: "Log in"
+        email: "Email"
+        pass: "Password"
+        submit: "Login"
+        new: "New member ?"
+        signup: "Sign up now!"
+      create:
+        warning: "Invalid email/password combination"
+    registrations:
+      signup_form:
+        text: "Create Account"
+        name: "Name"
+        email: "Email"
+        phone: "Phone number"
+        address: "Address"
+        pass: "Password"
+        confirm: "Password confirmation"
+        submit: "Create my account"
+        member: "Already a member ?"
+        login: "Login"
+      create:
+        welcome: "Welcome VP"
     edit:
       text: "Update profile"
       name: "Name"

@@ -2,7 +2,7 @@
   <div class="x_panel">
     <div class="x_content">
       <br>
-        <%= form_for :session, url: admin_login_path, class: "" do |f| %>
+        <%= form_for(resource, url: admin_login_path) do |f| %>
           <h1 class="text-center"><%= t (".login") %></h1>
 
           <div class="form-group">

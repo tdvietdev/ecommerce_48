@@ -1,21 +1,11 @@
-class Admin::SessionsController < ApplicationController
+class Admin::SessionsController < Devise::SessionsController
   layout "admin/application"
 
-  def new; end
-
   def create
-    user = User.find_by email: params[:session][:email].downcase
-    if user &.authenticate(params[:session][:password])
-      log_in user
-      redirect_back_or admin_root_url
-    else
-      flash[:danger] = t ".warning"
-      redirect_to admin_login_path
-    end
-  end
-
-  def destroy
-    log_out if logged_in?
-    redirect_to admin_root_url
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    redirect_to admin_root_path
   end
 end
