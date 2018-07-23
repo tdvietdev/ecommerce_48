@@ -30,6 +30,7 @@ Rails.application.routes.draw do
         get :list_image
       end
     end
+    resources :roles
   end
 
   get "/signup", to: "users#new"

@@ -3,18 +3,21 @@
   <th><%= user.name %></th>
   <th><%= user.phone %></th>
   <th><%= user.email %></th>
-  <th><%= user.permission %></th>
+  <th><%= user.role_name %></th>
   <th>
     <%= link_to [:admin, user], remote: true do %>
       <%= fa_icon "eye" %>
     <% end %>
   </th>
+  <td>
+    <%= link_to edit_admin_user_path(user), remote: true do %>
+      <%= fa_icon "edit" %>
+    <% end %>
+  </td>
   <th>
-    <% if !user.admin? %>
-      <%= link_to [:admin, user], method: :delete,
-        data: {confirm: t(".confirm")} do %>
-        <%= fa_icon "trash" %>
-      <% end %>
+    <%= link_to [:admin, user], method: :delete,
+      data: {confirm: t(".confirm")} do %>
+      <%= fa_icon "trash" %>
     <% end %>
   </th>
 </tr>
