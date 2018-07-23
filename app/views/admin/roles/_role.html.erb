@@ -1,0 +1,21 @@
+<tr>
+  <td>
+    <%= create_index params[:page], index, Settings.promotion.per_page %>
+  </td>
+  <td><%= role.name %></td>
+  <td><%= role.description %></td>
+  <% unless role.base_role? %>
+    <td>
+      <%= link_to edit_admin_role_path(role),
+        remote: true do %>
+        <%= fa_icon "edit" %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to [:admin, role], method: :delete,
+        data: {confirm: t(".confirm")} do %>
+        <%= fa_icon "trash" %>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

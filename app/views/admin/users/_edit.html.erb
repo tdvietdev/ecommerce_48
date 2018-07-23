@@ -1,0 +1,26 @@
+<h2 class="text-center"><%= t ".title" %></h2>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <br>
+        <%= form_for [:admin, @user],
+          class: "form-horizontal form-label-left", remote: true do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+          <div class="form-horizontal form-label-left text-center">
+            <%= f.label :role_id %>
+            <%= f.select :role_id, options_for_select(
+              @roles.collect{|u| [u.name, u.id]}, @user.role_id) %>
+          </div>
+          <div class="form-group text-center">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <%= f.submit %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to t(".back"), admin_users_path %>

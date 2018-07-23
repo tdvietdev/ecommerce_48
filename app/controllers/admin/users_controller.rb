@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::AdminController
   before_action :load_user, except: %i(index new create import)
 
   def index
-    @users = User.search(params[:search]).desc_create_at
+    @users = User.includes(:role)
+                 .search(params[:search]).desc_create_at
                  .select_attr
                  .page(params[:page])
                  .per Settings.user.index.per_page
@@ -18,12 +19,23 @@ class Admin::UsersController < Admin::AdminController
     end
   end
 
-  def edit; end
+  def edit
+    @roles = Role.except_admin
+  end
 
-  def update; end
+  def update
+    if @user.update_attributes user_params
+      flash[:success] = t(".success")
+      redirect_ajax admin_users_path
+    else
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
 
   def destroy
-    if @user.destroy && !@user.admin?
+    if !@user.role.super_admin? && @user.destroy
       flash[:success] = t(".success")
     else
       flash[:warning] = t(".error")
@@ -33,7 +45,7 @@ class Admin::UsersController < Admin::AdminController
 
   private
   def user_params
-    params.require(:user).permit :name, :avatar, :quantity, :price, :detail
+    params.require(:user).permit :role_id
   end
 
   def load_user

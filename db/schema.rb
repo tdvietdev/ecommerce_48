@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_095339) do
+ActiveRecord::Schema.define(version: 2018_07_22_075452) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -95,6 +95,14 @@ ActiveRecord::Schema.define(version: 2018_07_09_095339) do
     t.index ["user_id"], name: "index_rates_on_user_id"
   end
 
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_roles_on_name", unique: true
+  end
+
   create_table "suggestions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id"
@@ -111,7 +119,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_095339) do
     t.text "address"
     t.string "remember_digest"
     t.string "password_digest"
-    t.integer "permission", default: 3
     t.string "activation_digest"
     t.boolean "activated", default: false
     t.datetime "activated_at"
@@ -120,6 +127,8 @@ ActiveRecord::Schema.define(version: 2018_07_09_095339) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.bigint "role_id"
+    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "histories", "products"
@@ -133,4 +142,5 @@ ActiveRecord::Schema.define(version: 2018_07_09_095339) do
   add_foreign_key "rates", "products"
   add_foreign_key "rates", "users"
   add_foreign_key "suggestions", "users"
+  add_foreign_key "users", "roles"
 end

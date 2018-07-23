@@ -1,0 +1,33 @@
+<% provide :title, t(".title") %>
+<h2 class="text-center"><%= t(".title") %></h2>
+<div class="right" role="main" style="min-height: 1672px;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".stt" %></th>
+              <th><%= t ".name" %></th>
+              <th><%= t ".description" %></th>
+              <th colspan="2"></th>
+            </tr>
+            </thead>
+            <tbody>
+              <% @roles.each_with_index do |role, index| %>
+                <%= render "role", role: role, index: index %>
+              <% end %>
+            </tbody>
+          </table>
+          <div class="text-center">
+            <%= paginate @roles, theme: "twitter-bootstrap-3" %>
+          </div>
+          <br>
+          <%= link_to t(".new_roles"), new_admin_role_path,
+            remote: true %><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
