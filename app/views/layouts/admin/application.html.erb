@@ -10,7 +10,9 @@
 <body class="nav-md">
 <div class="container body">
   <div class="main_container">
-    <%= render "layouts/admin/slidebar" %>
+    <% if user_signed_in? %>
+      <%= render "layouts/admin/slidebar" %>
+    <% end %>
     <%= render "layouts/admin/navbar" %>
     <div class="right_col" role="main">
       <div id="notice" class="alert">

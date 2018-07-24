@@ -12,13 +12,13 @@ class ProductsController < ApplicationController
 
   def show
     @category = @product.category
-    return unless logged_in?
+    return unless user_signed_in?
     @rate = Rate.find_by user_id: current_user.id,
       product_id: params[:id]
   end
 
   def set_location
-    return if logged_in?
+    return if user_signed_in?
     store_location
   end
 
@@ -39,7 +39,7 @@ class ProductsController < ApplicationController
   end
 
   def save_history
-    return unless logged_in?
+    return unless user_signed_in?
     if current_user.visited_product? @product
       load_history(current_user, @product).touch
     else

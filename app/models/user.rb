@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :trackable, :validatable
   acts_as_url :name, url_attribute: :slug, sync_url: true
 
   has_many :rates
@@ -21,7 +23,6 @@ class User < ApplicationRecord
     format: {with: VALID_PHONE_REGEX}
   validates :address,
     length: {maximum: Settings.user.address.max_length}
-  has_secure_password
   validates :password, presence: true,
     length: {minimum: Settings.user.password.min_length}, allow_nil: true
 
@@ -30,45 +31,6 @@ class User < ApplicationRecord
   scope :search, (lambda do |key|
     where("name LIKE ? or phone LIKE ?", "%#{key}%", "%#{key}%") if key.present?
   end)
-
-  class << self
-    def digest string
-      cost =
-        if ActiveModel::SecurePassword.min_cost
-          BCrypt::Engine::MIN_COST
-        else
-          BCrypt::Engine.cost
-        end
-      BCrypt::Password.create string, cost: cost
-    end
-
-    def new_token
-      SecureRandom.urlsafe_base64
-    end
-  end
-
-  def remember
-    self.remember_token = User.new_token
-    update_attribute :remember_digest, User.digest(remember_token)
-  end
-
-  def authenticated? attribute, token
-    digest = send("#{attribute}_digest")
-    return false if digest.nil?
-    BCrypt::Password.new(digest).is_password?(token)
-  end
-
-  def forget
-    update_attributes remember_digest: nil
-  end
-
-  def activate
-    update_attributes activated: true, activated_at: Time.zone.now
-  end
-
-  def send_activation_email
-    UserMailer.account_activation(self).deliver_now
-  end
 
   def visited_product? product
     return histories.find_by(product_id: product.id).nil? ? false : true

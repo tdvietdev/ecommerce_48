@@ -12,7 +12,7 @@
         <%= render partial: "carts/cart" %>
       </div>
       <div class="cart-btns">
-        <% if logged_in? %>
+        <% if user_signed_in? %>
           <%= link_to new_order_path do %>
             <%= t(".checkout") %>
             <i class="fa fa-arrow-circle-right"></i>
