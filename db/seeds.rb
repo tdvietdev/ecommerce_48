@@ -6,8 +6,6 @@ User.create!(name:  "Admin",
   password_confirmation: "12345678",
   phone: "01234567899",
   address: "Ha Noi, Viet Nam",
-  activated: true,
-  activated_at: Time.zone.now,
   role_id: 2)
 
 20.times do |n|
@@ -20,8 +18,6 @@ User.create!(name:  "Admin",
     email: email,
     password:              password,
     password_confirmation: password,
-    activated: true,
-    activated_at: Time.zone.now,
     phone: phone,
     role_id: 1,
     address: address)

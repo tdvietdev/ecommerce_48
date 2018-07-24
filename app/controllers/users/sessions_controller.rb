@@ -1,7 +1,9 @@
 class Users::SessionsController < Devise::SessionsController
   before_action :load_categories
 
-  def new; end
+  def new
+    self.resource = resource_class.new(sign_in_params)
+  end
 
    def create
     self.resource = warden.authenticate!(auth_options)

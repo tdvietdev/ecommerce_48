@@ -12,6 +12,8 @@ user:
     min_length: 8
   index:
     per_page: 7
+  token_min: 0
+  token_max: 20
 category:
   name_max: 70
   name_min: 3

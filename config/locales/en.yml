@@ -64,6 +64,9 @@ en:
         submit: "Login"
         new: "New member ?"
         signup: "Sign up now!"
+        facebook: "Login with Facebook"
+        google: " Login with Google+"
+        other: "Or Login with: "
       create:
         warning: "Invalid email/password combination"
     registrations:

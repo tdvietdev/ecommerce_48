@@ -17,6 +17,19 @@
 
       <%= f.submit t(".submit"), class: "btn btn-primary" %>
     <% end %>
+    <hr/>
+    <%= t ".other" %>
+    <br/>
+    <div class="col">
+      <%= link_to user_facebook_omniauth_authorize_path, class: "fb btn" do %>
+        <i class="fa fa-facebook fa-fw"></i>
+        <%= t ".facebook" %>
+      <% end %>
+      <%= link_to user_google_oauth2_omniauth_authorize_path, class: "google btn" do %>
+        <i class="fa fa-facebook fa-fw"></i>
+        <%= t ".google" %>
+      <% end %>
+    </div>
     <div class="separator">
       <%= t ".new" %>
       <span class="change_link">
