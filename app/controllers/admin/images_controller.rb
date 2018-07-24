@@ -1,5 +1,7 @@
 class Admin::ImagesController < Admin::AdminController
-  before_action :load_image, only: [:show, :edit, :update, :destroy]
+  authorize_resource class: false
+
+  before_action :load_image, only: %i(update destroy)
 
   def show; end
 

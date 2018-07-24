@@ -1,4 +1,6 @@
 class Admin::SuggestionsController < Admin::AdminController
+  authorize_resource class: false
+
   before_action :load_suggestion, only: %i(edit update show)
 
   def index

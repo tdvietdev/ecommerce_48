@@ -1,4 +1,6 @@
 class Admin::ProductsController < Admin::AdminController
+  authorize_resource class: false
+
   before_action :load_product, except: %i(index new create import)
 
   def index

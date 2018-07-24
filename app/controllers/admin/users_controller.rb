@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::AdminController
+  authorize_resource class: false
+
   before_action :load_user, except: %i(index new create)
 
   def index
