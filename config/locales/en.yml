@@ -273,6 +273,11 @@ en:
         back: "Back"
       user:
         confirm: "Delete user? Are you sure?"
+      update:
+        success: "User is updated!"
+      destroy:
+        success: "Delete user sucess!"
+        error: "Delete user error!"
     suggestions:
       index:
         title: "Suggestion Manager"
@@ -285,6 +290,29 @@ en:
         update: "Submit"
       update:
         success: "Update status suggestions success !"
+    roles:
+      index:
+        title: "Roles Manager"
+        stt: "STT"
+        name: "Name"
+        description: "Description"
+      destroy:
+        error: "Delete is error !"
+      role:
+        confirm: "Do you sure to delete role?"
+      edit:
+        title: "Editing role..."
+        back: "Back"
+      new:
+        title: "New role"
+        back: "Back"
+      create:
+        success: "Created success!"
+      update:
+        success: "Updated success!"
+      destroy:
+        success: "Destroy success!"
+        error: "Role belong to user!"
   carts:
     add_product:
       not_found: "Product not found"
@@ -298,3 +326,7 @@ en:
     has_product: "This category has products!"
   product:
     exits_order: "This product belong to order!"
+  role:
+    exist: "This role is existing!"
+    base: "This role is base role!"
+    exits_user: "This role belong to users!"
