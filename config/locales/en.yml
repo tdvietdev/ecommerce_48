@@ -23,7 +23,6 @@ en:
       logout: "Log out"
       login: "Log in"
       settings: "Settings"
-      login: "Log in"
       email: "Email"
       pass: "Password"
       submit: "Login"
@@ -171,12 +170,6 @@ en:
         title: "New Product"
       product:
         confirm: "Are you sure?"
-      show:
-        id: "ID"
-        name: "Name"
-        price: "Price"
-        quantity: "Quantity"
-        action: "Action"
       edit:
         show: "Show"
         back: "Back"
@@ -297,8 +290,7 @@ en:
         stt: "STT"
         name: "Name"
         description: "Description"
-      destroy:
-        error: "Delete is error !"
+
       role:
         confirm: "Do you sure to delete role?"
       edit:
@@ -327,6 +319,7 @@ en:
     has_product: "This category has products!"
   product:
     exits_order: "This product belong to order!"
+    price_format: "đ"
   role:
     exist: "This role is existing!"
     base: "This role is base role!"

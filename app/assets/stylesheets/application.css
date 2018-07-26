@@ -5,5 +5,6 @@
  *= require slick
  *= require slick_theme
  *= require nav
+ *= require banner
  *= require_self
  */

@@ -1,3 +1,23 @@
+<div class="container">
+  <div id="carousel-example-generic" class="carousel slide"
+    data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <% @top_seller_products.each_with_index do |product, index| %>
+        <%= render "banner", product: product, index: index %>
+      <% end %>
+    </div>
+    <a class="left carousel-control" href="#carousel-example-generic"
+      role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic"
+      role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+  </div>
+</div>
 
 <!-- SECTION -->
 <div class="section">

@@ -9,7 +9,8 @@ module ProductsHelper
     image_url(product.avatar.image.url)
   end
 
-  def new_products
-    Product.order_by_create_at.limit(20)
+  def format_price price
+    number_to_currency price, precision: 0, delimiter: ".",
+      unit: I18n.t("product.price_format"), format: "%n %u"
   end
 end

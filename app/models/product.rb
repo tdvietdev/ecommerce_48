@@ -40,13 +40,14 @@ class Product < ApplicationRecord
   scope :filter_start, (lambda do |date|
     where("products.created_at >= ?", date) if date.present?
   end)
-
   scope :top_order, (lambda do |start_date = nil, end_date = nil|
     joins(:order_details)
-      .select("products.id, products.price, products.created_at, products.name as name, count(order_details.id) as total")
+      .select("products.id, products.price, products.created_at, products.name
+        as name, count(order_details.id) as total")
       .filter_end(end_date).filter_start(start_date)
-      .group(:product_id)
+      .group(:product_id).order("total DESC")
   end)
+  scope :new_products, ->{order_by_create_at.limit Settings.product.max_new}
 
   def new?
     (Time.now - created_at).to_i / 1.day <= 7

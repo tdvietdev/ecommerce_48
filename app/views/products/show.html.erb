@@ -24,9 +24,10 @@
           <h2 class="product-name"><%= @product.name %></h2>
           <%= render "rating_information" %>
           <div>
-            <h3 class="product-price"><%= @product.current_price %>
+            <h3 class="product-price"><%= format_price @product.current_price %>
               <% if @product.have_promotion? %>
-                <del class="product-old-price"><%= @product.price %></del>
+                <del class="product-old-price"><%= format_price @product.price %>
+                </del>
               <% end %>
             </h3>
             <span class="product-available"><%= t ".instock" %></span>
