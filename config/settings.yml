@@ -25,3 +25,5 @@ order:
   per_page: 7
 suggestion:
   per_page: 7
+permission:
+  except: ["admin", "session"]

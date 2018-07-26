@@ -1,5 +1,7 @@
 class Role < ApplicationRecord
   has_many :users
+  has_and_belongs_to_many :permissions
+
   before_save :check_exist
   before_destroy :check_exits_user, :check_base_role
 
@@ -17,7 +19,7 @@ class Role < ApplicationRecord
 
   private
   def check_exist
-    return if exist? name
+    return if exist?
     errors[:base] << I18n.t("role.exist")
     throw :abort
   end
@@ -28,8 +30,8 @@ class Role < ApplicationRecord
     throw :abort
   end
 
-  def exist? name
-    Role.where(name: name).empty?
+  def exist?
+    Role.where(name: name).where.not(id: id).empty?
   end
 
   def check_exits_user

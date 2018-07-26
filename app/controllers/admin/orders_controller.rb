@@ -1,4 +1,6 @@
 class Admin::OrdersController < Admin::AdminController
+  authorize_resource class: false
+
   before_action :load_order, only: %i(edit update show)
 
   def index
@@ -28,7 +30,6 @@ class Admin::OrdersController < Admin::AdminController
   end
 
   private
-
   def order_params
     params.require(:order).permit :status
   end

@@ -24,6 +24,23 @@
                     "form-control col-md-7 col-xs-12" %>
               </div>
             </div>
+            <div class="form-group">
+              <h3 class="text-center"><%= t ".permissions" %></h3>
+              <div class="col-md-offset-2 col-md-10 col-sm-12 col-xs-12">
+                <div class="row">
+                  <%= collection_check_boxes :role, :permission_ids,
+                    Permission.names_asc, :id, :subject_class do |b| %>
+                    <div class="col-md-6 col-sm-9 col-xs-12">
+                      <div class="checkbox">
+                        <label>
+                          <%= b.check_box %> <%= b.label %>
+                        </label>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="form-group text-center">
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">

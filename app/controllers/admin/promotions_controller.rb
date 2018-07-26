@@ -1,6 +1,9 @@
 class Admin::PromotionsController < Admin::AdminController
-  before_action :load_promotion, only: [:show, :edit, :update, :destroy]
+  authorize_resource class: false
+
+  before_action :load_promotion, except: %i(index new create)
   before_action :load_product
+
   def index
     @promotions = @product.promotions.desc_end_date
                           .page(params[:page])

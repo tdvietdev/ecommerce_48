@@ -1,5 +1,6 @@
 class Admin::StaticPagesController < Admin::AdminController
-  Groupdate.time_zone = false
+  authorize_resource class: false
+
   def index
     @options = {
       1 => "user", 2 => "product_order", 3 => "revenue",

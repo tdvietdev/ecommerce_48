@@ -331,3 +331,5 @@ en:
     exist: "This role is existing!"
     base: "This role is base role!"
     exits_user: "This role belong to users!"
+  cancancan:
+    not_permission: "Access denied. You are not authorized to access the requested page !"

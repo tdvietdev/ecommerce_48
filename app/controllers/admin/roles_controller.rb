@@ -1,4 +1,6 @@
 class Admin::RolesController < Admin::AdminController
+  authorize_resource class: false
+
   before_action :load_role, except: %i(index new create)
 
   def index
@@ -71,6 +73,6 @@ class Admin::RolesController < Admin::AdminController
   end
 
   def role_params
-    params.require(:role).permit :name, :description
+    params.require(:role).permit :name, :description, :permission_ids => []
   end
 end

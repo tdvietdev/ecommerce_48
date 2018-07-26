@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
   include HistoriesHelper
   include ApplicationHelper
 
+  class << self
+    def permission
+      return name.gsub("Controller", "").singularize.split("::").last.underscore
+    end
+  end
+
   private
   def set_locale
     I18n.locale = session[:locale] || I18n.default_locale
