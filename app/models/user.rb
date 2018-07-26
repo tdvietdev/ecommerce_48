@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
-    :recoverable, :rememberable, :trackable, :validatable
+    :recoverable, :rememberable, :trackable, :validatable,
+    :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   acts_as_url :name, url_attribute: :slug, sync_url: true
+
+  before_validation :set_default_role
 
   has_many :rates
   has_many :orders
@@ -20,9 +23,9 @@ class User < ApplicationRecord
     uniqueness: {case_sensitive: false}
   VALID_PHONE_REGEX = /\A[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$\z/
   validates :phone, presence: true,
-    format: {with: VALID_PHONE_REGEX}
-  validates :address,
-    length: {maximum: Settings.user.address.max_length}
+    format: {with: VALID_PHONE_REGEX}, allow_nil: true
+  validates :address, presence: true,
+    length: {maximum: Settings.user.address.max_length}, allow_nil: true
   validates :password, presence: true,
     length: {minimum: Settings.user.password.min_length}, allow_nil: true
 
@@ -44,6 +47,26 @@ class User < ApplicationRecord
     "#{id}-#{slug}"
   end
 
+  class << self
+    def new_with_session params, session
+      super.tap do |user|
+        if data = session["devise.facebook_data"] &&
+          session["devise.facebook_data"]["extra"]["raw_info"]
+          user.email = data["email"] if user.email.blank?
+        end
+      end
+    end
+
+    def from_omniauth auth
+      where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[Settings.user.token_min, Settings.user.token_max]
+        user.name = auth.info.name
+        user.role_id = 1
+      end
+    end
+  end
+
   private
 
   def downcase_email
@@ -53,5 +76,9 @@ class User < ApplicationRecord
   def create_activation_digest
     self.activation_token  = User.new_token
     self.activation_digest = User.digest activation_token
+  end
+
+  def set_default_role
+    self.role_id ||= 1
   end
 end
