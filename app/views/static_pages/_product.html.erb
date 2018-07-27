@@ -12,9 +12,9 @@
   </div>
   <div class="product-body">
     <h3 class="product-name"><%= link_to product.name, product %></h3>
-    <h4 class="product-price"><%= product.current_price %>
+    <h4 class="product-price"><%= format_price product.current_price %>
       <% if product.have_promotion? %>
-        <del class="product-old-price"><%= product.price %></del>
+        <del class="product-old-price"><%= format_price product.price %></del>
       <% end %>
     </h4>
     <div class="product-rating">
