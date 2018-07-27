@@ -19,6 +19,12 @@ class Order < ApplicationRecord
   scope :search, (lambda do |key|
     where("phone LIKE ? or address LIKE ?", "%#{key}%", "%#{key}%") if key.present?
   end)
+  scope :from_this_month, (lambda do
+    where "orders.created_at > ? AND orders.created_at < ?",
+      Time.now.beginning_of_month, Time.now.end_of_month
+  end)
+  scope :success, -> {where status: 2}
+
   def filter start_date, end_date
     filter_start_date(start_date).filter_end_date(end_date)
   end

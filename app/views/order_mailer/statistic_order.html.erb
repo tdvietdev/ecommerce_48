@@ -1,0 +1,19 @@
+<style>
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+</style>
+<h2><%= t ".hi" %></h2>
+<table style="width:100%">
+  <tr>
+    <th><%= t ".stt" %></th>
+    <th><%= t ".date" %></th>
+    <th><%= t ".name" %></th>
+    <th><%= t ".details" %></th>
+    <th><%= t ".total" %></th>
+  </tr>
+  <% @orders.each_with_index do |order, index|%>
+    <%= render "order_detail", order: order, index: index %>
+  <% end %>
+</table>

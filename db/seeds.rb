@@ -1,7 +1,8 @@
 Role.create! name: "User"
 Role.create! name: "Super Admin"
-User.create!(name:  "Admin",
-  email: "ad@ad.com",
+User.create!(
+  name:  "Super Admin",
+  email: "tdviet.dev@gmail.com",
   password: "12345678",
   password_confirmation: "12345678",
   phone: "01234567899",

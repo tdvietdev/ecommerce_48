@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 2018_07_24_052709) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "permissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "subject_class"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "permissions_roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "permission_id"
+    t.bigint "role_id"
+    t.index ["permission_id"], name: "index_permissions_roles_on_permission_id"
+    t.index ["role_id"], name: "index_permissions_roles_on_role_id"
+  end
+
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "detail"
@@ -143,6 +156,8 @@ ActiveRecord::Schema.define(version: 2018_07_24_052709) do
   add_foreign_key "order_details", "orders"
   add_foreign_key "order_details", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "permissions_roles", "permissions"
+  add_foreign_key "permissions_roles", "roles"
   add_foreign_key "products", "categories"
   add_foreign_key "promotions", "products"
   add_foreign_key "rates", "products"
