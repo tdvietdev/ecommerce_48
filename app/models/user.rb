@@ -65,6 +65,10 @@ class User < ApplicationRecord
         user.role_id = 1
       end
     end
+
+    def super_admin
+      where(role_id: 2).first
+    end
   end
 
   private

@@ -15,6 +15,7 @@ gem "chartkick"
 gem "ckeditor"
 gem "coffee-rails", "~> 4.2"
 gem "config"
+gem "devise"
 gem "dropzonejs-rails", "~> 0.7.3"
 gem "faker", "1.7.3"
 gem "figaro", "~> 1.1", ">= 1.1.1"
@@ -23,6 +24,9 @@ gem "jbuilder", "~> 2.5"
 gem "jquery-rails", "~> 4.3", ">= 4.3.3"
 gem "kaminari"
 gem "groupdate"
+gem "omniauth"
+gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
 gem "mini_magick", "~> 4.8"
 gem "momentjs-rails", ">= 2.9.0"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
@@ -33,11 +37,7 @@ gem "roo-xls"
 gem "rubocop", "~> 0.54.0", require: false
 gem "sass-rails", "~> 5.0"
 gem "uglifier", ">= 1.3.0"
-gem "devise"
-gem "omniauth"
-gem "omniauth-google-oauth2"
-gem "omniauth-facebook"
-
+gem "whenever", :require => false
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end

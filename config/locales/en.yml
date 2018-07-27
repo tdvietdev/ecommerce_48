@@ -329,3 +329,14 @@ en:
     exits_user: "This role belong to users!"
   cancancan:
     not_permission: "Access denied. You are not authorized to access the requested page !"
+  order_mailer:
+    statistic_order:
+      subject: "Statistic Order Monthly"
+      stt: "Stt"
+      date: "Date"
+      name: "Name"
+      details: "Details"
+      total: "Total"
+      hi: "Hi admin! This is statics order in current month!"
+    order_infomation:
+      subject: "Account activation"
