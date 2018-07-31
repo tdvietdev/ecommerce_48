@@ -340,3 +340,5 @@ en:
       hi: "Hi admin! This is statics order in current month!"
     order_infomation:
       subject: "Account activation"
+  chatwork:
+    title: "Statistic Orders"
