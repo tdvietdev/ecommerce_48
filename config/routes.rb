@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       end
     end
     resources :roles
+    resources :config_mails
   end
 
   resources :users do

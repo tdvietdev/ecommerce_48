@@ -50,6 +50,7 @@ en:
         users: "Users"
         new_user: "New User"
         list_user: "List User"
+        settings: "Settings"
   static_pages:
     home:
       home: "Home"
@@ -311,6 +312,9 @@ en:
       destroy:
         success: "Destroy success!"
         error: "Role belong to user!"
+    config_mails:
+      create:
+        success: "Success"
   carts:
     add_product:
       not_found: "Product not found"

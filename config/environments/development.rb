@@ -32,4 +32,13 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
   config.action_mailer.default_url_options = {host: "localhost", port: 3000}
+    ActionMailer::Base.smtp_settings = {
+      address: ConfigMail.address.empty? ? "smtp.sendgrid.net" : ConfigMail.address,
+      port: ConfigMail.port.empty? ? "587" : ConfigMail.port,
+      authentication: :plain,
+      user_name: ConfigMail.user_name.empty? ? ENV["SENDGRID_USERNAME"] : ConfigMail.user_name,
+      password: ConfigMail.password.empty? ? ENV["SENDGRID_PASSWORD"] : ConfigMail.password,
+      domain: ConfigMail.domain.empty? ? "heroku.com" : ConfigMail.domain,
+      enable_starttls_auto: true
+  }
 end
