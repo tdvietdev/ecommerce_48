@@ -24,6 +24,8 @@
         <%= f.password_field :password_confirmation,
           placeholder: t(".confirm"), class: "form-control" %>
 
+        <%= f.hidden_field :role_id, value: 1 %>
+
         <%= f.submit t(".submit"), class: "btn btn-primary" %>
       <% end %>
       <div class="login-link">

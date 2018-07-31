@@ -11,9 +11,9 @@ Rails.application.routes.draw do
     root "static_pages#index"
     devise_for :users, skip: [:sessions]
     as :user do
-      get "login", to: 'sessions#new'
-      post "login", to: 'sessions#create'
-      delete "logout", to: 'sessions#destroy'
+      get "login", to: "sessions#new"
+      post "login", to: "sessions#create"
+      delete "logout", to: "sessions#destroy"
     end
     resources :static_pages
     resources :categories do

@@ -115,6 +115,7 @@ en:
         danger: "Login please!"
         admin: "Please login admin account"
         index: "Home"
+        export: "Export to excel"
     sessions:
       new:
         email: "Email"
@@ -342,3 +343,9 @@ en:
       subject: "Account activation"
   chatwork:
     title: "Statistic Orders"
+  report:
+    base: "Report "
+    datetime: "Date time"
+    product: "Product name"
+    quantity: "Quantity"
+    total_money: "Total money (vnd)"
