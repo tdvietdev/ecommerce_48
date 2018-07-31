@@ -1,20 +1,22 @@
 .carousel-inner > .item {
+  cursor: pointer;
   height: 50vh;
   > img {
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    left: 35%;
+    max-height: 350px;
+    object-fit: cover;
     position: absolute;
     top: 50%;
-    left: 45%;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    max-height: 800px;
     width: auto;
   }
   > .carousel-caption{
     left: auto;
     max-width: 300px;
     padding:50px;
-    right: 20%;
+    right: 25%;
     text-align: right;
     top: 5%;
   }

@@ -1,0 +1,102 @@
+@import 'color';
+span.m_span::before {
+  display: none;
+}
+
+.easy-tree {
+  background-color: $main;
+  border-top: none;
+  border: none;
+  color: $white;
+  margin-bottom: 20px;
+  min-height: 20px;
+  padding-bottom: 15px;
+  > ul {
+    padding-left: 15px;
+  }
+  li {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px 5px 0 5px;
+    position: relative;
+    &::before, &::after {
+      content: '';
+      left: -30px;
+      position: absolute;
+      right: auto;
+    }
+    &::before {
+      border-left: 1px solid $white;
+      bottom: 50px;
+      height: 100%;
+      top: 0;
+      width: 1px;
+    }
+    &::after {
+      border-top: 1px solid $white;
+      height: 20px;
+      top: 30px;
+      width: 35px;
+    }
+    > span {
+      border: 1px solid $white;
+      border-radius: 3px;
+      display: inline-block;
+      padding: 5px;
+      text-decoration: none;
+    }
+    &.parent_li > span {
+      cursor: pointer;
+    }
+    &:last-child::before {
+      height: 30px;
+    }
+    &.parent_li > span:hover {
+      background: $red;
+      color: $white;
+      + ul li {
+        span {
+          background: $red;
+          color: $white;
+        }
+      }
+    }
+    > span > {
+      a {
+        color: $white;
+        text-decoration: none;
+      }
+      span {
+        &.glyphicon-folder-close, &.glyphicon-folder-open {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  > ul > li {
+    &::before, &::after {
+      border: 0;
+    }
+  }
+  .easy-tree-toolbar {
+    background-color: $white;
+    > div {
+      display: inline-block;
+      > button {
+        border-radius: 0;
+        margin: 20px 5px;
+      }
+    }
+    .create .input-group {
+      margin-right: -5px;
+      input, button {
+        border-radius: 0;
+      }
+    }
+  }
+  a{
+    .fa{
+      color: #feebff;
+    }
+  }
+}
