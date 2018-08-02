@@ -7,6 +7,12 @@ class Admin::StaticPagesController < Admin::AdminController
       4 => "order_quantity", 5 => "product"
     }
     @objects = load_objects(params[:option])
+    respond_to do |format|
+	    format.html
+	    format.xls {
+        filename = I18n.t("report.base") + "#{@options[params[:option].to_i]} #{Time.now.strftime("%Y%m%dH%M%S")}.xls"
+        send_data to_xls(@objects, params[:option], col_sep: "\t"), filename: filename }
+	  end
   end
 
   def load_objects param
@@ -28,6 +34,24 @@ class Admin::StaticPagesController < Admin::AdminController
     else
       Order.filter(params[:start_date], params[:end_date])
            .group_by_day(:created_at).sum_money
+    end
+  end
+
+  def to_xls(objects, param, options = {})
+    CSV.generate(options) do |csv|
+      case param
+      when "1", "4"
+        csv << [I18n.t("report.datetime"), I18n.t("report.quantity")]
+      when "2"
+        csv << [I18n.t("report.product"), I18n.t("report.quantity")]
+      when "3"
+        csv << [I18n.t("report.datetime"), I18n.t("report.total_money")]
+      when "5"
+        csv << [I18n.t("report.product"), I18n.t("report.total_money")]
+      end
+      objects.each do |key, val|
+        csv << [key, val]
+      end
     end
   end
 end

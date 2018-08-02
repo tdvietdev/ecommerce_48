@@ -9,5 +9,13 @@
     <div class="x_content">
       <%= yield :chart %>
     </div>
+    <div>
+      <%= form_tag admin_root_path(format: "xls"), method: "get" do %>
+        <%= hidden_field_tag "option", params[:option] %>
+        <%= hidden_field_tag "start_date", params[:start_date] %>
+        <%= hidden_field_tag "end_date", params[:end_date] %>
+        <button type="submit" class="btn "><%= t ".export"%></button>
+      <% end %>
+    </div>
   </div>
 </div>
