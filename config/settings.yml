@@ -30,3 +30,6 @@ suggestion:
   per_page: 7
 permission:
   except: ["admin", "session"]
+chatwork:
+  chatroom_id: "104917365"
+  admin_id: 3075711
