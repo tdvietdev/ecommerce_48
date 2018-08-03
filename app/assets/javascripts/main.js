@@ -94,3 +94,8 @@ function show_md() {
     $('#myModalNew').modal('show')
   })
 }
+$(function() {
+  $('.item').on('click', function() {
+    window.location = $(this).find('a').attr('href');
+  });
+});

@@ -45,6 +45,7 @@ en:
         suggestion: "Suggestions"
         products: "Products"
         orders: "Orders"
+        roles: "Roles"
         general: "General"
         users: "Users"
         new_user: "New User"

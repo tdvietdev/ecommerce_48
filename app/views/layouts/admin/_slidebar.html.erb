@@ -17,7 +17,7 @@
           </li>
           <li>
             <%= link_to admin_users_path do%>
-              <i class="fa fa-users"></i> <%= t ".users" %>
+              <i class="fa fa-user"></i> <%= t ".users" %>
             <% end %>
           </li>
           <li>
@@ -40,13 +40,18 @@
               <i class="fa fa-send"></i> <%= t ".orders" %>
             <% end %>
           </li>
+          <li>
+            <%= link_to admin_roles_path do%>
+              <i class="fa fa-users"></i> <%= t ".roles" %>
+            <% end %>
+          </li>
         </ul>
       </div>
     </div>
     <div class="sidebar-footer hidden-small">
-      <a data-toggle="tooltip" data-placement="top" title="Logout" href="">
+      <%= link_to admin_logout_path, method: :delete do %>
         <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-      </a>
+      <% end %>
     </div>
   </div>
 </div>
