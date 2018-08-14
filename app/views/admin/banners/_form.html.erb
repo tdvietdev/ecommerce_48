@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="x_panel">
+      <div class="x_content">
+        <br>
+        <%= form_for [:admin, @banner],
+          class: "form-horizontal form-label-left", remote: true do |f| %>
+          <%= render "shared/error_messages", object: f.object %>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <div class="form-horizontal form-label-left">
+
+              <div class="form-group">
+                <%= f.label :title, class:
+                    "control-label col-md-3 col-sm-3 col-xs-12" %>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <%= f.text_field :title, class:
+                      "form-control col-md-7 col-xs-12" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :link, class:
+                    "control-label col-md-3 col-sm-3 col-xs-12" %>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <%= f.text_field :link, class:
+                      "form-control col-md-7 col-xs-12" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :active, class:
+                    "control-label col-md-3 col-sm-3 col-xs-12" %>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <%= f.check_box :active, class:
+                      "form-control col-md-7 col-xs-12" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :picture, class:
+                    "control-label col-md-3 col-sm-3 col-xs-12" %>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <%= f.file_field :picture, class:
+                      "form-control col-md-7 col-xs-12" %>
+                </div>
+                <div class="text-center">
+                <% if @banner.picture? %>
+                  <%= image_tag @banner.picture.thumb.url %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                <%= f.submit %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 col-xs-12">
+            <h3 class="text-center"><%= t ".use_product" %></h3>
+            <div class="input-group">
+              <%= text_field_tag :search, params[:search],
+                class: "form-control" %>
+              <span class="input-group-btn">
+              <input type="button" id="btn-search" class="btn btn-success"
+                width="10px" value="<%= t ".search" %>">
+              </span>
+            </div>
+            <div class="form-group pre-scrollable" id="list_product">
+              <% Product.list_sellect.each do |id, name|%>
+              <%= radio_button_tag("product_id", id, false,
+                onclick: "radioClick(this);") %><%= name %> <br>
+              <% end %>
+            </div>
+            <div id="ajax_info" class="text-center">
+              <input type="text" hidden value="2" id="current_page">
+              <input type="button" id="load_product" hidden
+                class="btn-sm btn-success" width="10px"
+                value="<%= t ".load_more" %>">
+            </div>
+          </div>
+      <% end %>
+      </div>
+    </div>
+</div>
+<%= javascript_include_tag "admin/sellect_banner" %>

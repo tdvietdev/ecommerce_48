@@ -1,0 +1,3 @@
+o:ConfigMail
+:@addressI"smtp.sendgrid.net:ET:@user_nameI"app102200700@heroku.com;T:@passwordI"u8gjabva0843;T:
+@portI"587;T:@domainI"heroku.com;T

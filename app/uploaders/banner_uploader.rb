@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class BannerUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   storage :file
@@ -12,10 +12,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   version :default do
-    process resize_to_fit: [600, 600]
-    end
-
-  version :banner do
     process resize_to_fit: [1200, 600]
   end
 

@@ -315,6 +315,33 @@ en:
     config_mails:
       create:
         success: "Success"
+    banners:
+      index:
+        search: "Search"
+        stt: "STT"
+        title: "Title"
+        active: "Actived"
+        action: "Action"
+        new_banner: "New Banner"
+      banner:
+        confirm: "Delete banner? Are you sure?"
+      edit:
+        title: "Edit banner"
+        back: "Back"
+      form:
+        use_product: "Use product"
+        search: "Search"
+        load_more: "Load more"
+      new:
+        title: "Add new banner"
+        back: "Back"
+      show:
+        title: "Title"
+        link: "Link"
+        active: "Active"
+        banner: "Banner image"
+        back: "Back"
+
   carts:
     add_product:
       not_found: "Product not found"

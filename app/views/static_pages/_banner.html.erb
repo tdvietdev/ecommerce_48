@@ -1,8 +1,7 @@
 <div class="item <%= "active" if index == 0 %>">
-  <%= link_to "", product %>
-  <%= product_avatar product %>
+  <%= link_to "", banner.link %>
+  <%= get_image banner %>
   <div class="carousel-caption">
-    <h4><%= product.name %></h4>
-    <h6><%= format_price product.price %></h6>
+    <h4><%= banner.title %></h4>
   </div>
 </div>

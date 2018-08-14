@@ -33,3 +33,8 @@ permission:
 chatwork:
   chatroom_id: "104917365"
   admin_id: 3075711
+banner:
+  per_page: 6
+  max_title: 200
+  min_title: 5
+  limit: 10

@@ -1,0 +1,38 @@
+<div class="right" role="main">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".title" %></th>
+              <th> <%= @banner.title %> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th><%= t ".link" %></th>
+              <th> <%= @banner.link %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".active" %></th>
+              <th> <%= @banner.active %> </th>
+            </tr>
+            <tr>
+              <th><%= t ".banner" %></th>
+                <th>
+                  <% unless @banner.picture.url.nil? %>
+                    <%= image_tag @banner.picture.url, height: "120",
+                      width: "240" %>
+                  <% end %>
+                </th>
+            </tr>
+            </tbody>
+          </table>
+          <%= link_to t(".back"), admin_banners_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

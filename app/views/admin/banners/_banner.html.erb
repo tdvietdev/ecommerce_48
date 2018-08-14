@@ -1,0 +1,21 @@
+<tr>
+  <td><%= create_index params[:page], index, Settings.banner.per_page %></td>
+  <th><%= banner.title %></th>
+  <th><%= banner.active %></th>
+  <th>
+    <%= link_to [:admin, banner], remote: true do %>
+      <%= fa_icon "eye" %>
+    <% end %>
+  </th>
+  <td>
+    <%= link_to edit_admin_banner_path(banner), remote: true do %>
+      <%= fa_icon "edit" %>
+    <% end %>
+  </td>
+  <th>
+    <%= link_to [:admin, banner], method: :delete,
+      data: {confirm: t(".confirm")} do %>
+      <%= fa_icon "trash" %>
+    <% end %>
+  </th>
+</tr>

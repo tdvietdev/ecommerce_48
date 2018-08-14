@@ -1,0 +1,40 @@
+<% provide :modal_size, "modal-lg" %>
+<%= render "shared/admin_modal" %>
+<div class="right" role="main" style="min-height: 1672px;">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <div class="col-md-offset-3 col-md-6 col-sm-6 col-xs-12 text-center">
+            <%= form_tag admin_banners_path, method: "get",
+              enforce_utf8: false do %>
+              <%= text_field_tag :search, params[:search],
+                class: "form-control" %>
+              <%= submit_tag t(".search"), :name => nil,
+                class: "btn btn-success", width: "10px" %>
+            <% end %>
+          </div>
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t ".stt" %></th>
+              <th><%= t ".title" %></th>
+              <th><%= t ".active" %></th>
+              <th colspan="4"><%= t ".action" %></th>
+            </tr>
+            </thead>
+              <tbody>
+              <% @banners.each_with_index do |banner, index| %>
+                <%= render "banner", banner: banner, index: index %>
+              <% end %>
+              </tbody>
+          </table>
+          <%= link_to t(".new_banner"), new_admin_banner_path, remote: true %>
+          <div class="text-center">
+            <%= paginate @banners, theme: "twitter-bootstrap-3" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

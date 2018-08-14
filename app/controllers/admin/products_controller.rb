@@ -8,6 +8,10 @@ class Admin::ProductsController < Admin::AdminController
                        .search(params[:search]).desc_create_at.select_attr
                        .page(params[:page])
                        .per Settings.product.per_page
+    respond_to do |format|
+      format.html
+      format.json{render json: @products}
+    end
   end
 
   def new
@@ -79,6 +83,15 @@ class Admin::ProductsController < Admin::AdminController
       images.push(m_image)
     end
     render json: {images: images}
+  end
+
+  def info
+    render json: {
+      id: @product.id,
+      name: @product.name,
+      link: product_url(@product),
+      price: @product.current_price
+    }
   end
 
   private

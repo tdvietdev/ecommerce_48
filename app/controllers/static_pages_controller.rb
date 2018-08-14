@@ -6,6 +6,7 @@ class StaticPagesController < ApplicationController
     @new_products = Product.includes(:images, :promotions).new_products
     @top_seller_products = Product.includes(:images, :promotions)
       .top_order.limit Settings.product.top_seller
+    @banners = Banner.list_actived.limit Settings.banner.limit
   end
 
   def help; end

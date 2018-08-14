@@ -33,10 +33,12 @@ Rails.application.routes.draw do
       end
       member do
         get :list_image
+        get :info
       end
     end
     resources :roles
     resources :config_mails
+    resources :banners
   end
 
   resources :users do

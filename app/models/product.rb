@@ -48,7 +48,7 @@ class Product < ApplicationRecord
       .group(:product_id).order("total DESC")
   end)
   scope :new_products, ->{order_by_create_at.limit Settings.product.max_new}
-
+  scope :list_sellect, ->{pluck(:id, :name)}
   def new?
     (Time.now - created_at).to_i / 1.day <= 7
   end
